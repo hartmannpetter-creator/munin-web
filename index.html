@@ -3,7 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ── SEO: tittel + beskrivelse (det Google viser i søk) ── -->
 <title>Munin — selvlærende bildiagnostikk</title>
+<meta name="description" content="Selvlærende bildiagnostikk som lærer bilens friske tilstand å kjenne og varsler når noe endrer seg — før feilkoden kommer. OBD-basert, bygget i Norge.">
+<meta name="keywords" content="bildiagnostikk, selvlærende diagnose, OBD, feilkode, bilfeil, prediktiv diagnose, bilhelse">
+<meta name="author" content="Petter Hartmann">
+<meta name="robots" content="index, follow">
+
+<!-- ── Canonical: fortell Google at HTTPS-apex er den rette URL-en ── -->
+<link rel="canonical" href="https://munin-diagnostics.com/">
+
+<!-- ── Open Graph: hvordan lenken ser ut delt på Facebook/Messenger/LinkedIn ── -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Munin Diagnostics">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:url" content="https://munin-diagnostics.com/">
+<meta property="og:title" content="Munin — selvlærende bildiagnostikk">
+<meta property="og:description" content="Bilen din har et språk. Munin lytter til det — et selvlærende diagnostikksystem som kjenner bilens friske tilstand og varsler før feilkoden kommer.">
+<meta property="og:image" content="https://munin-diagnostics.com/images/hero.jpg">
+<meta property="og:image:alt" content="Munin — selvlærende bildiagnostikk">
+
+<!-- ── Twitter/X-kort ── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Munin — selvlærende bildiagnostikk">
+<meta name="twitter:description" content="Bilen din har et språk. Munin lytter til det — og varsler før feilkoden kommer.">
+<meta name="twitter:image" content="https://munin-diagnostics.com/images/hero.jpg">
+
+<!-- ── Structured data: sier eksplisitt at dette er bildiagnostikk-programvare,
+        ikke server-monitorering. Motvirker navnekollisjon med open source-Munin. ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Munin",
+  "alternateName": "Munin Diagnostics",
+  "applicationCategory": "Selvlærende bildiagnostikk",
+  "operatingSystem": "Jetson Orin Nano (om bord i kjøretøy)",
+  "description": "Selvlærende bildiagnostikk som lærer bilens friske tilstand å kjenne og varsler når noe er i ferd med å endre seg — før feilkoden kommer. Leser bilens OBD-II-datastrøm passivt, lærer om bord, og gir én klar konklusjon i stedet for en strøm av tall.",
+  "url": "https://munin-diagnostics.com/",
+  "inLanguage": "no",
+  "author": {
+    "@type": "Person",
+    "name": "Petter Hartmann"
+  },
+  "areaServed": "NO",
+  "keywords": "bildiagnostikk, OBD, feilkode, prediktiv bildiagnose, selvlærende diagnose"
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -320,7 +368,7 @@
   <div class="wrap hero-inner">
     <p class="eyebrow">Munin Diagnostics</p>
     <h1>Bilen din<br>har et <em>språk</em>.</h1>
-    <p class="lede"><strong>Munin lytter til det.</strong> Et selvlærende diagnostikksystem som lærer din bils normale tilstand å kjenne — og merker når noe er i ferd med å endre seg.</p>
+    <p class="lede"><strong>Munin lytter til det.</strong> Et selvlærende diagnostikksystem for bil som lærer din bils normale tilstand å kjenne — og merker når noe er i ferd med å endre seg, før feilkoden kommer.</p>
     <div class="hero-meta">
       <span class="status-pill"><span class="dot"></span>Kjører på ekte biler i dag · under aktiv utvikling</span>
     </div>
@@ -406,7 +454,7 @@
     <div class="spec-grid reveal">
       <div class="spec">
         <p class="k">Maskinvare</p>
-        <p class="v">Raspberry Pi 5 + Hailo NPU</p>
+        <p class="v">Jetson Orin Nano + dedikert NPU</p>
         <p class="d">En dedikert AI-akselerator om bord. Læring og analyse skjer lokalt, på enheten.</p>
       </div>
       <div class="spec">
