@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Munin — fremgang</title>
+<meta name="description" content="Fremgangslogg for Munin — selvlærende bildiagnostikk. Rapporter fra ekte kjøreturer, milepæler i systemet og funn underveis.">
+<link rel="canonical" href="https://munin-diagnostics.com/logg.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -111,6 +113,17 @@
   .reveal{opacity:0;transform:translateY(18px)}
   .reveal.in{opacity:1;transform:none;transition:opacity 0.7s ease,transform 0.7s cubic-bezier(.2,.8,.2,1)}
 
+  /* ── SEO-fallback: statisk innhold for crawlere/uten JS.
+        Skjules straks JavaScript overtar (se .js-on-regel under). ── */
+  .noscript-fallback .entry-card{
+    background:var(--night-2);border:1px solid var(--line);
+    border-radius:14px;padding:26px 28px;margin-bottom:14px;
+  }
+  .noscript-fallback h3{font-family:'Fraunces',serif;font-weight:500;font-size:23px;line-height:1.2;margin-bottom:10px}
+  .noscript-fallback p{color:var(--ice-dim);font-size:15.5px}
+  .noscript-fallback .entry-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ice-dim);display:block;margin-bottom:8px}
+  .js-on .noscript-fallback{display:none}
+
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   @media(max-width:620px){.loghead{padding:54px 0 36px}.entry{padding-left:40px}}
 </style>
@@ -137,6 +150,50 @@
 </header>
 
 <main class="wrap">
+  <!-- ────────────────────────────────────────────────────────────
+       STATISK SEO-FALLBACK — de nyeste oppføringene som ren HTML.
+       Dette er det Google og søkemotorer leser (de kjører ikke JS).
+       Brukere ser aldri dette: .js-on-klassen skjuler den straks
+       JavaScript kjører, og #timeline nedenfor tar over.
+
+       ⚠ VEDLIKEHOLD: denne blokken oppdateres IKKE automatisk når du
+       legger til nye oppføringer i LOGG-arrayen lenger ned. Når du
+       legger til noe viktig nytt, kopier de nyeste inn her også.
+       Permanent, vedlikeholdsfri løsning står i roadmap.md (GitHub Action).
+       ──────────────────────────────────────────────────────────── -->
+  <div class="noscript-fallback">
+    <article class="entry-card">
+      <span class="entry-date">Juni 2026 · Bilde</span>
+      <h3>Reisen mot neste generasjon har begynt</h3>
+      <p>Munin er født på en Raspberry Pi, men neste steg er allerede i gang: en plattform som samler CPU, GPU og NPU på samme enhet — slik at bilen kan lære sin egen friske tilstand på nytt om bord, uten en datamaskin ved siden av.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">Juni 2026 · Milepæl</span>
+      <h3>Munin lærer å kjenne sin egen friske tilstand</h3>
+      <p>Systemet fikk et fast referansepunkt for hvordan bilen ser ut når den er frisk, slik at en gradvis endring kan måles mot noe stabilt i stedet for å gli umerkelig forbi. Munin fryser dette punktet av seg selv når bilen har vist det den trenger, og kan tilbakestille det når en del faktisk byttes.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">Juni 2026 · Milepæl</span>
+      <h3>Servicepåminnelser knyttet til hva bilen faktisk trenger</h3>
+      <p>Et eget spor for vedlikehold med intervaller per bil og en servicelogg systemet selv hjelper å holde orden i. Når noe byttes, forteller dette Munin at den skal lære bilens nye, friske tilstand på nytt.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">Juni 2026 · Rapport · Freelander 2 · TD4</span>
+      <h3>Termostatfeil funnet før den ga feilkode</h3>
+      <p>Fra tre måneders kjøredata pekte flere uavhengige spor mot samme svikt: motoren nådde ikke riktig temperatur under belastning, og falt unormalt raskt når foten gikk av gassen. En lekk termostat — fanget lenge før den ville utløst en varsellampe. Munins første ekte feltdiagnose.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">Juni 2026 · Rapport</span>
+      <h3>Et viktig hull i systemet oppdaget — og tettet</h3>
+      <p>En gjennomgang avdekket at avviksdeteksjonen sammenlignet bilen mot seg selv i øyeblikket, ikke mot en frisk fortid. En bil med en feil fra første dag ville da lære feilen som normal. Funnet utløste hele arbeidet med det faste referansepunktet.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">Juni 2026 · Milepæl</span>
+      <h3>Vurderer en bruktbil før du kjøper den</h3>
+      <p>En egen vurderingstype rettet mot bilkjøp: Munin kobler bilens egne måledata mot kjente svakheter for nettopp den modellen og årgangen. I stedet for bare å lese bilen foran deg, vet den hva den skal se etter på akkurat den biltypen.</p>
+    </article>
+  </div>
+
   <div class="timeline" id="timeline"></div>
 </main>
 
@@ -148,6 +205,9 @@
 </footer>
 
 <script>
+  /* Signaliser at JS er på → skjuler den statiske fallbacken over. */
+  document.body.classList.add('js-on');
+
   /* ───────────────────────────────────────────────────────────
      FREMGANGSLOGG — rediger denne listen for å legge til oppføringer.
      Nyeste øverst. Felter:
@@ -291,7 +351,7 @@
       type:"milepael",
       tittel:"Det fysiske fundamentet på plass",
       bil:"",
-      tekst:"Munins maskinvaregrunnmur på en Raspberry Pi 5: av/på-knapp, statuslys, trygg avslutning, og en stabil forbindelse til bilens OBD-port. Herfra ble alt annet bygget.",
+      tekst:"Munins maskinvaregrunnmur: av/på-knapp, statuslys, trygg avslutning, og en stabil forbindelse til bilens OBD-port. Herfra ble alt annet bygget.",
       bilde:"",
       lenke:null
     }
