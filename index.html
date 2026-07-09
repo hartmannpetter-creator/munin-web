@@ -6,8 +6,8 @@
 
 <!-- ── SEO: tittel + beskrivelse (det Google viser i søk) ── -->
 <title>Munin — selvlærende bildiagnostikk</title>
-<meta name="description" content="Selvlærende bildiagnostikk som lærer bilens friske tilstand å kjenne og varsler når noe endrer seg — før feilkoden kommer. OBD-basert, bygget i Norge.">
-<meta name="keywords" content="bildiagnostikk, selvlærende diagnose, OBD, feilkode, bilfeil, prediktiv diagnose, bilhelse">
+<meta name="description" content="Selvlærende bildiagnostikk for prediktivt vedlikehold. Munin lærer maskinens friske tilstand å kjenne og oppdager degradering før feilen kommer. OBD-basert i dag, kildeagnostisk arkitektur. Bygget i Norge.">
+<meta name="keywords" content="prediktivt vedlikehold, selvlærende diagnostikk, degradering, tilstandsovervåking, bildiagnostikk, OBD, prediktiv diagnose, maskinovervåking">
 <meta name="author" content="Petter Hartmann">
 <meta name="robots" content="index, follow">
 
@@ -20,14 +20,14 @@
 <meta property="og:locale" content="nb_NO">
 <meta property="og:url" content="https://munin-diagnostics.com/">
 <meta property="og:title" content="Munin — selvlærende bildiagnostikk">
-<meta property="og:description" content="Bilen din har et språk. Munin lytter til det — et selvlærende diagnostikksystem som kjenner bilens friske tilstand og varsler før feilkoden kommer.">
+<meta property="og:description" content="Selvlærende system for prediktivt vedlikehold. Munin lærer maskinens friske tilstand å kjenne og ser degraderingen før feilen kommer.">
 <meta property="og:image" content="https://munin-diagnostics.com/images/hero.jpg">
 <meta property="og:image:alt" content="Munin — selvlærende bildiagnostikk">
 
 <!-- ── Twitter/X-kort ── -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Munin — selvlærende bildiagnostikk">
-<meta name="twitter:description" content="Bilen din har et språk. Munin lytter til det — og varsler før feilkoden kommer.">
+<meta name="twitter:description" content="Munin lærer maskinens friske tilstand å kjenne og ser degraderingen før feilen kommer.">
 <meta name="twitter:image" content="https://munin-diagnostics.com/images/hero.jpg">
 
 <!-- ── Structured data: sier eksplisitt at dette er bildiagnostikk-programvare,
@@ -38,9 +38,9 @@
   "@type": "SoftwareApplication",
   "name": "Munin",
   "alternateName": "Munin Diagnostics",
-  "applicationCategory": "Selvlærende bildiagnostikk",
+  "applicationCategory": "Prediktivt vedlikehold og selvlærende bildiagnostikk",
   "operatingSystem": "Jetson Orin Nano (om bord i kjøretøy)",
-  "description": "Selvlærende bildiagnostikk som lærer bilens friske tilstand å kjenne og varsler når noe er i ferd med å endre seg — før feilkoden kommer. Leser bilens OBD-II-datastrøm passivt, lærer om bord, og gir én klar konklusjon i stedet for en strøm av tall.",
+  "description": "Selvlærende system for prediktivt vedlikehold. Munin lærer maskinens friske tilstand å kjenne og oppdager degradering før den blir en feil. Leser OBD-II-datastrømmen passivt i dag, med kildeagnostisk arkitektur, lærer om bord, og gir én klar konklusjon i stedet for en strøm av tall.",
   "url": "https://munin-diagnostics.com/",
   "inLanguage": "no",
   "author": {
@@ -48,7 +48,7 @@
     "name": "Petter Hartmann"
   },
   "areaServed": "NO",
-  "keywords": "bildiagnostikk, OBD, feilkode, prediktiv bildiagnose, selvlærende diagnose"
+  "keywords": "prediktivt vedlikehold, degradering, tilstandsovervåking, selvlærende diagnostikk, bildiagnostikk, OBD, prediktiv bildiagnose"
 }
 </script>
 
@@ -367,8 +367,8 @@
   </nav>
   <div class="wrap hero-inner">
     <p class="eyebrow">Munin Diagnostics</p>
-    <h1>Bilen din<br>har et <em>språk</em>.</h1>
-    <p class="lede"><strong>Munin lytter til det.</strong> Et selvlærende diagnostikksystem for bil som lærer din bils normale tilstand å kjenne — og merker når noe er i ferd med å endre seg, før feilkoden kommer.</p>
+    <h1>Ser <em>degraderingen</em><br>før feilen.</h1>
+    <p class="lede"><strong>Munin lærer hvordan maskinen oppfører seg når den er frisk</strong>, og varsler når tilstanden begynner å gli — mens det fortsatt er tid til å handle.</p>
     <div class="hero-meta">
       <span class="status-pill"><span class="dot"></span>Kjører på ekte biler i dag · under aktiv utvikling</span>
     </div>
@@ -380,18 +380,18 @@
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Problemet</p>
-      <h2>En feilkode forteller deg <em>at</em> noe er galt.<br>Sjelden <em>hva</em>.</h2>
+      <h2>En feilkode kommer <em>for sent</em>.</h2>
     </div>
     <div class="compare reveal">
       <div class="old">
-        <h3>Vanlig feilkodeleser</h3>
-        <p class="big">Reagerer når feilen allerede har skjedd.</p>
-        <p>Leser lagrede koder fra bilens datamaskin. Gir deg et nummer og en generisk forklaring — men ikke konteksten, ikke historikken, og ikke det som er i ferd med å gå galt akkurat på din bil.</p>
+        <h3>Feilkode</h3>
+        <p class="big">Registreres når avviket allerede har skjedd.</p>
+        <p>Den forteller at noe er galt — ikke at noe er i ferd med å bli det. Du får et nummer og en generisk forklaring, men ikke konteksten, ikke historikken, og ikke retningen tilstanden beveger seg i.</p>
       </div>
       <div class="new">
         <h3>Munin</h3>
-        <p class="big">Kjenner bilen din før noe går galt.</p>
-        <p>Bygger over tid et bilde av hvordan nettopp din bil oppfører seg når den er frisk. Når mønsteret begynner å gli — i trykk, luftstrøm, temperatur — ser Munin det tidlig, mens det fortsatt er et varsel og ikke en havari.</p>
+        <p class="big">Fanger degraderingen mens den fortsatt er et varsel.</p>
+        <p>Følger tilstanden mens den ennå er innenfor det normale, og ser mønsteret gli — i trykk, luftstrøm, temperatur — tidlig. Mens vedlikehold fortsatt er planlagt, ikke akutt.</p>
       </div>
     </div>
   </div>
@@ -401,24 +401,24 @@
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Hvordan</p>
-      <h2>Tre trinn, fra rådata til et svar du kan bruke.</h2>
-      <p style="color:var(--ice-dim);font-size:17px;margin-top:18px">Munin gjør tre ting, i rekkefølge: lærer hva som er normalt for bilen din, vurderer hva et avvik faktisk betyr, og gir deg én klar konklusjon i stedet for en strøm av tall.</p>
+      <h2>Tre trinn, fra normaltilstand til risiko.</h2>
+      <p style="color:var(--ice-dim);font-size:17px;margin-top:18px">Munin arbeider i rekkefølge: lærer hva som er normalt for maskinen, ser når tilstanden degraderer, og vurderer hva det betyr for veien videre — én klar konklusjon i stedet for en strøm av tall.</p>
     </div>
     <div class="ravens">
       <div class="raven-card reveal">
         <div class="step">01</div>
-        <h3>Lærer</h3>
-        <p>Bygger over uker og måneder et bilde av hvordan nettopp din motor oppfører seg når den er frisk. Ingenting er forhåndsinnstilt — alt læres fra bilen selv.</p>
+        <h3>Normaltilstand</h3>
+        <p>Bygger over uker og måneder et bilde av hvordan nettopp denne maskinen oppfører seg når den er frisk. Ingenting er forhåndsinnstilt — alt læres fra maskinen selv.</p>
       </div>
       <div class="raven-card reveal">
         <div class="step">02</div>
-        <h3>Vurderer</h3>
-        <p>Ser et avvik i sammenheng med alt det andre, og vurderer hva som faktisk foregår — i stedet for å slå alarm ved hvert lille utslag.</p>
+        <h3>Degradering</h3>
+        <p>Når mønsteret begynner å gli, ser Munin det i sammenheng — ikke som et enkeltutslag, men som en tilstand i endring.</p>
       </div>
       <div class="raven-card reveal">
         <div class="step">03</div>
-        <h3>Forklarer</h3>
-        <p>Setter det sammen til en forklaring du kan handle på. Du får konklusjonen og hva den betyr — ikke støyen bak.</p>
+        <h3>Risiko</h3>
+        <p>Vurderer hva endringen betyr for veien videre, og gir én klar konklusjon du kan planlegge vedlikehold etter — ikke støyen bak.</p>
       </div>
     </div>
   </div>
@@ -432,7 +432,7 @@
 <section class="principles">
   <div class="wrap">
     <p class="eyebrow reveal" style="text-align:center;margin-bottom:48px">Hva Munin lover</p>
-    <p class="principle reveal">Stillhet er bedre enn en <em>feil diagnose</em>. Munin sier ifra når den er trygg — ikke for å fylle skjermen.</p>
+    <p class="principle reveal">Stillhet er bedre enn en <em>falsk alarm</em>. Munin sier ifra når den er trygg — ikke for å fylle skjermen.</p>
     <p class="principle reveal">Systemet <em>foreslår</em>. Mennesket bestemmer. Du sitter alltid med siste ord.</p>
   </div>
 </section>
@@ -458,19 +458,19 @@
         <p class="d">En dedikert AI-akselerator om bord. Læring og analyse skjer lokalt, på enheten.</p>
       </div>
       <div class="spec">
-        <p class="k">Tilkobling</p>
-        <p class="v">OBD-II — passiv observatør</p>
-        <p class="d">Munin lytter til bilens egen datastrøm. Den sender aldri kommandoer til kjøretøyet.</p>
+        <p class="k">Datagrunnlag</p>
+        <p class="v">OBD-II i dag — passiv observatør</p>
+        <p class="d">Dataene er råstoff, ikke målet. Arkitekturen er agnostisk mot kilde; verdien ligger i hva systemet lærer av dem over tid. Munin sender aldri kommandoer til maskinen.</p>
       </div>
       <div class="spec">
         <p class="k">Hvor det skjer</p>
         <p class="v">Læring om bord, dyp analyse hos Hugin</p>
-        <p class="d">Den løpende læringen av bilens normaltilstand kjører lokalt på enheten. Når en grundig vurdering trengs, sendes utvalgte data til et kraftigere resonneringslag.</p>
+        <p class="d">Den løpende læringen av maskinens normaltilstand kjører lokalt på enheten. Når en grundig vurdering trengs, sendes utvalgte data til et kraftigere resonneringslag.</p>
       </div>
       <div class="spec">
         <p class="k">Tilnærming</p>
         <p class="v">Selvlærende, ikke hardkodet</p>
-        <p class="d">I stedet for faste terskler bygger Munin sin egen forståelse av hva som er normalt for hver enkelt bil.</p>
+        <p class="d">I stedet for faste terskler bygger Munin sin egen forståelse av hva som er normalt for hver enkelt maskin.</p>
       </div>
     </div>
   </div>
