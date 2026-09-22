@@ -163,6 +163,16 @@
        ──────────────────────────────────────────────────────────── -->
   <div class="noscript-fallback">
     <article class="entry-card">
+      <span class="entry-date">September 2026 · Milepæl · Freelander 2 · TD4</span>
+      <h3>AI-brikken om bord har begynt å lære</h3>
+      <p>Etter måneder med innsamling har bilen nok kjøredata til at alle signalgruppene kan trenes. Hver gruppe får sin egen modell på AI-brikken om bord, trent utelukkende på denne bilens friske tilstand. De første er ferdige, og resten følger. Derfra kan Munin se når et mønster begynner å skli, før det blir en feil.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">September 2026 · Rapport · Freelander 2 · TD4</span>
+      <h3>Første månedsrapport, uten menneskehånd</h3>
+      <p>Alle tre rapporttypene virker nå, og den første månedsrapporten ble skrevet og sendt helt på egen hånd. Fra kalenderen slo inn til PDF-en lå i innboksen, rørte ingen noe. Rapporten gir sammendraget først, og deretter det som betyr noe. Konsekvensen står i klartekst, og det står hva verkstedet bør se på. Neste månedsrapport får tettere data på de viktigste signalene og vurderingen fra de nye modellene.</p>
+    </article>
+    <article class="entry-card">
       <span class="entry-date">Juni 2026 · Bilde</span>
       <h3>Reisen mot neste generasjon har begynt</h3>
       <p>Munin er født på en Raspberry Pi, men neste steg er allerede i gang: en plattform som samler CPU, GPU og NPU på samme enhet — slik at bilen kan lære sin egen friske tilstand på nytt om bord, uten en datamaskin ved siden av.</p>
@@ -221,11 +231,29 @@
      ─────────────────────────────────────────────────────────── */
   const LOGG = [
     {
+      dato:"September 2026",
+      type:"milepael",
+      tittel:"AI-brikken om bord har begynt å lære",
+      bil:"Freelander 2 · TD4",
+      tekst:"Etter måneder med innsamling har bilen nok kjøredata til at alle signalgruppene kan trenes. Hver gruppe får sin egen modell på AI-brikken om bord, trent utelukkende på denne bilens friske tilstand. De første er ferdige, og resten følger. Derfra kan Munin se når et mønster begynner å skli, før det blir en feil.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"September 2026",
+      type:"rapport",
+      tittel:"Første månedsrapport, uten menneskehånd",
+      bil:"Freelander 2 · TD4",
+      tekst:"Alle tre rapporttypene virker nå, og den første månedsrapporten ble skrevet og sendt helt på egen hånd. Fra kalenderen slo inn til PDF-en lå i innboksen, rørte ingen noe. Rapporten gir sammendraget først, og deretter det som betyr noe. Konsekvensen står i klartekst, og det står hva verkstedet bør se på. Neste månedsrapport får tettere data på de viktigste signalene og vurderingen fra de nye modellene.",
+      bilde:"",
+      lenke:null
+    },
+    {
       dato:"Juni 2026",
       type:"bilde",
       tittel:"Reisen mot neste generasjon har begynt",
       bil:"",
-      tekst:"Munin klarte ikke oppgavene sine på rasberry Pi 5. nå biter vi i det sure eple 🍎 og migrerer til ny maskinvare: en plattform som samler CPU, GPU og NPU på samme enhet.",
+      tekst:"Munin klarte ikke oppgavene sine på Raspberry Pi 5. Nå biter vi i det sure eplet 🍎 og migrerer til ny maskinvare: en plattform som samler CPU, GPU og NPU på samme enhet.",
       bilde:"images/PXL_20260630_083604202.jpg",
       lenke:null
     },
@@ -242,8 +270,8 @@
       dato:"Juni 2026",
       type:"milepael",
       tittel:"Vurderer en bruktbil før du kjøper den",
-      bil:"Land Rover Freelander2, TD4",
-      tekst:"Lagt til en tredje rapport type. STassessment: Munin kobler bilens egne måledata mot kjente svakheter for nettopp den modellen og årgangen, hentet inn utenfra. I stedet for bare å lese bilen foran deg, vet den hva den skal se etter på akkurat den biltypen.",
+      bil:"Freelander 2 · TD4",
+      tekst:"Lagt til en tredje rapporttype, bruktbilvurdering: Munin kobler bilens egne måledata mot kjente svakheter for nettopp den modellen og årgangen, hentet inn utenfra. I stedet for bare å lese bilen foran deg, vet den hva den skal se etter på akkurat den biltypen.",
       bilde:"",
       lenke:{ tekst:"Se eksempelrapport", url:"images/report_2026-06-28_11-02-04_STassessment.pdf" }
     },
