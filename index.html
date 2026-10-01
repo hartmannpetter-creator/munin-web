@@ -4,48 +4,47 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ── SEO: tittel + beskrivelse (det Google viser i søk) ── -->
-<title>Munin — prediktivt vedlikehold og bildiagnostikk</title>
-<meta name="description" content="Selvlærende bildiagnostikk for prediktivt vedlikehold. Munin lærer maskinens friske tilstand å kjenne og oppdager degradering før feilen kommer. OBD-basert i dag, kildeagnostisk arkitektur. Bygget i Norge.">
-<meta name="keywords" content="prediktivt vedlikehold, selvlærende diagnostikk, degradering, tilstandsovervåking, bildiagnostikk, OBD, prediktiv diagnose, maskinovervåking">
+<!-- SEO: tittel og beskrivelse (det Google viser i søk) -->
+<title>Munin Diagnostics · selvlærende bildiagnostikk</title>
+<meta name="description" content="Munin lærer hvordan din bil oppfører seg, og måler hvor langt den beveger seg bort fra det over tid. Prototype i daglig drift. Bygget i Norge.">
+<meta name="keywords" content="bildiagnostikk, selvlærende diagnostikk, OBD-II, tilstandsovervåking, feilkode">
 <meta name="author" content="Petter Hartmann">
 <meta name="robots" content="index, follow">
 
-<!-- ── Språkversjoner: forteller Google at /en/ er den engelske utgaven ── -->
+<!-- Språkversjoner: forteller Google at /en/ er den engelske utgaven -->
 <link rel="alternate" hreflang="no" href="https://munin-diagnostics.com/">
 <link rel="alternate" hreflang="en" href="https://munin-diagnostics.com/en/">
 <link rel="alternate" hreflang="x-default" href="https://munin-diagnostics.com/">
 
-<!-- ── Canonical: fortell Google at HTTPS-apex er den rette URL-en ── -->
+<!-- Canonical -->
 <link rel="canonical" href="https://munin-diagnostics.com/">
 
-<!-- ── Open Graph: hvordan lenken ser ut delt på Facebook/Messenger/LinkedIn ── -->
+<!-- Open Graph: hvordan lenken ser ut ved deling -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Munin Diagnostics">
 <meta property="og:locale" content="nb_NO">
 <meta property="og:url" content="https://munin-diagnostics.com/">
-<meta property="og:title" content="Munin — prediktivt vedlikehold og bildiagnostikk">
-<meta property="og:description" content="Selvlærende system for prediktivt vedlikehold. Munin lærer motorens friske tilstand og ser degraderingen før feilen kommer.">
+<meta property="og:title" content="Munin Diagnostics · selvlærende bildiagnostikk">
+<meta property="og:description" content="Munin lærer hvordan din bil oppfører seg, og måler hvor langt den beveger seg bort fra det over tid. Prototype i daglig drift. Bygget i Norge.">
 <meta property="og:image" content="https://munin-diagnostics.com/images/hero.jpg">
-<meta property="og:image:alt" content="Munin — prediktivt vedlikehold og bildiagnostikk">
+<meta property="og:image:alt" content="Munin Diagnostics">
 
-<!-- ── Twitter/X-kort ── -->
+<!-- Twitter/X-kort -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Munin — prediktivt vedlikehold og bildiagnostikk">
-<meta name="twitter:description" content="Munin lærer motorens friske tilstand og ser degraderingen før feilen kommer.">
+<meta name="twitter:title" content="Munin Diagnostics · selvlærende bildiagnostikk">
+<meta name="twitter:description" content="Munin lærer hvordan din bil oppfører seg, og måler hvor langt den beveger seg bort fra det over tid. Prototype i daglig drift. Bygget i Norge.">
 <meta name="twitter:image" content="https://munin-diagnostics.com/images/hero.jpg">
 
-<!-- ── Structured data: sier eksplisitt at dette er bildiagnostikk-programvare,
-        ikke server-monitorering. Motvirker navnekollisjon med open source-Munin. ── -->
+<!-- Structured data: bildiagnostikk-programvare, ikke server-monitorering -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Munin",
   "alternateName": "Munin Diagnostics",
-  "applicationCategory": "Prediktivt vedlikehold og selvlærende bildiagnostikk",
+  "applicationCategory": "Bildiagnostikk",
   "operatingSystem": "Jetson Orin Nano (om bord i kjøretøy)",
-  "description": "Selvlærende system for prediktivt vedlikehold. Munin lærer maskinens friske tilstand å kjenne og oppdager degradering før den blir en feil. Leser OBD-II-datastrømmen passivt i dag, med kildeagnostisk arkitektur, lærer om bord, og gir én klar konklusjon i stedet for en strøm av tall.",
+  "description": "Selvlærende bildiagnostikk som kjører i bilen på en Jetson Orin Nano. Munin leser bilens OBD-II-data uten å endre noe i bilen, lærer bilen slik den er, setter en referanse som låses etter første år, og måler endring mot den. Rapportene skrives av et analyselag i skyen.",
   "url": "https://munin-diagnostics.com/",
   "inLanguage": "no",
   "author": {
@@ -53,7 +52,7 @@
     "name": "Petter Hartmann"
   },
   "areaServed": "NO",
-  "keywords": "prediktivt vedlikehold, degradering, tilstandsovervåking, selvlærende diagnostikk, bildiagnostikk, OBD, prediktiv bildiagnose"
+  "keywords": "bildiagnostikk, selvlærende diagnostikk, OBD-II, tilstandsovervåking, feilkode"
 }
 </script>
 
@@ -115,6 +114,8 @@
     background:linear-gradient(90deg, rgba(10,14,26,0.80) 0%, rgba(10,14,26,0.45) 38%, rgba(10,14,26,0.05) 65%, rgba(10,14,26,0) 100%);
   }
   .hero-inner{position:relative;z-index:2}
+  .hero-logo{display:block;width:clamp(220px,30vw,360px);height:auto;margin-bottom:40px}
+  .topnav-right{margin-left:auto}
   .topnav{
     position:absolute;top:0;left:0;right:0;z-index:5;
     display:flex;justify-content:space-between;align-items:center;
@@ -227,7 +228,7 @@
     line-height:1.3;margin-bottom:14px;font-weight:400;
   }
 
-  /* how it works — the ravens */
+  /* how it works: the ravens */
   .how{background:var(--night-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .ravens{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:10px}
   .raven-card{
@@ -247,7 +248,7 @@
   .raven-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:22px;margin-bottom:12px}
   .raven-card p{color:var(--ice-dim);font-size:15px}
 
-  /* principles — the signature trust band */
+  /* principles: the signature trust band */
   .principles{text-align:center}
   .principle{
     font-family:'Fraunces',serif;
@@ -316,7 +317,7 @@
   /* CTA */
   .cta{text-align:center;background:var(--night-2);border-top:1px solid var(--line)}
 
-  /* origin — discreet myth footnote */
+  /* origin: discreet myth footnote */
   .origin{padding:64px 0;background:var(--night)}
   .origin-text{
     max-width:600px;color:var(--ice-dim);font-size:15px;line-height:1.7;
@@ -365,6 +366,24 @@
     *{animation:none!important;transition:none!important}
     .reveal{opacity:1;transform:none}
   }
+
+  /* kjernen: to spørsmål */
+  .core{border-top:1px solid var(--line)}
+  .core-body{max-width:680px;display:grid;gap:22px}
+  .core-body p{color:var(--ice-dim);font-size:18px}
+  .core-body p.core-key{
+    color:var(--ice);font-family:'Fraunces',serif;font-size:24px;line-height:1.35;
+    border-left:2px solid var(--ember);padding-left:22px;
+  }
+
+  /* status og grenser */
+  .status{border-top:1px solid var(--line)}
+  .status-list{
+    list-style:none;max-width:760px;
+    border:1px solid var(--line);border-radius:14px;background:var(--night-2);
+  }
+  .status-list li{padding:20px 26px;color:var(--ice-dim);font-size:16px;border-top:1px solid var(--line)}
+  .status-list li:first-child{border-top:none}
 </style>
 </head>
 <body>
@@ -372,18 +391,17 @@
 <header class="hero">
   <div class="hero-bg"></div>
   <nav class="topnav">
-    <span class="topnav-brand mono">MUNIN</span>
     <div class="topnav-right">
       <a href="logg.html" class="topnav-link mono">Fremgang →</a>
       <span class="lang mono"><span class="on">NO</span> · <a href="en/" hreflang="en" lang="en">EN</a></span>
     </div>
   </nav>
   <div class="wrap hero-inner">
-    <p class="eyebrow">Munin Diagnostics</p>
-    <h1>Ser <em>degraderingen</em><br>før feilen.</h1>
-    <p class="lede"><strong>Munin lærer hvordan maskinen oppfører seg når den er frisk</strong>, og varsler når tilstanden begynner å gli — mens det fortsatt er tid til å handle.</p>
+    <img class="hero-logo" src="images/munin_logo_stor_tekst_hvit.png" alt="Munin Diagnostics" width="2801" height="531">
+    <h1>Ser endringen <em>før feilkoden</em>.</h1>
+    <p class="lede"><strong>Munin lærer hvordan akkurat din bil oppfører seg</strong>, slik den er når Munin settes inn, og måler hvor langt den beveger seg bort fra det over måneder og år.</p>
     <div class="hero-meta">
-      <span class="status-pill"><span class="dot"></span>Kjører på ekte biler i dag · under aktiv utvikling</span>
+      <span class="status-pill"><span class="dot"></span>Prototype · i daglig drift i én testbil</span>
     </div>
   </div>
   <span class="scroll-cue">↓ observér</span>
@@ -393,19 +411,33 @@
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Problemet</p>
-      <h2>En feilkode kommer <em>for sent</em>.</h2>
+      <h2>En feilkode kommer <em>ofte sent</em>.</h2>
     </div>
     <div class="compare reveal">
       <div class="old">
         <h3>Feilkode</h3>
-        <p class="big">Registreres når avviket allerede har skjedd.</p>
-        <p>Den forteller at noe er galt — ikke at noe er i ferd med å bli det. Du får et nummer og en generisk forklaring, men ikke konteksten, ikke historikken, og ikke retningen tilstanden beveger seg i.</p>
+        <p class="big">Settes når bilens egen grense er passert.</p>
+        <p>Den sier at noe er galt, ikke at noe er i ferd med å bli det. Du får en kode og en generell forklaring, men lite om historikken bak eller hvilken vei bilen er på vei.</p>
       </div>
       <div class="new">
         <h3>Munin</h3>
-        <p class="big">Fanger degraderingen mens den fortsatt er et varsel.</p>
-        <p>Følger tilstanden mens den ennå er innenfor det normale, og ser mønsteret gli — i trykk, luftstrøm, temperatur — tidlig. Mens vedlikehold fortsatt er planlagt, ikke akutt.</p>
+        <p class="big">Følger bilen mens alt fortsatt er innenfor det den pleier.</p>
+        <p>Munin måler endringen over tid, tur for tur. På testbilen ble en termostatfeil sett i dataene uten at bilen hadde satt en feilkode. Da er det fortsatt tid til å planlegge.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="core">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Kjernen</p>
+      <h2>To spørsmål, <em>ikke ett</em>.</h2>
+    </div>
+    <div class="core-body reveal">
+      <p>De fleste systemer spør om noe er i ferd med å svikte. Munin spør også hvor langt bilen har beveget seg siden Munin ble satt inn. Det er ikke samme spørsmål.</p>
+      <p>En referanse som flytter seg med bilen, ser raske endringer. Slitasje fordelt over fire eller fem år glir inn i referansen og blir borte. Derfor følger Munins referanse bilen gjennom første år, så den får se alle årstidene, og låses på årsdagen. Etter det endrer Munin den aldri på egen hånd.</p>
+      <p class="core-key">Etter en reparasjon står referansen. Da viser den selv om reparasjonen virket.</p>
     </div>
   </div>
 </section>
@@ -414,24 +446,24 @@
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Hvordan</p>
-      <h2>Tre trinn, fra normaltilstand til risiko.</h2>
-      <p style="color:var(--ice-dim);font-size:17px;margin-top:18px">Munin arbeider i rekkefølge: lærer hva som er normalt for maskinen, ser når tilstanden degraderer, og vurderer hva det betyr for veien videre — én klar konklusjon i stedet for en strøm av tall.</p>
+      <h2>Tre trinn, fra første tur til vurdering.</h2>
+      <p style="color:var(--ice-dim);font-size:17px;margin-top:18px">Munin arbeider i rekkefølge: lærer bilen, setter en referanse, og måler hver tur mot den. Resultatet er en vurdering i vanlig språk, ikke en strøm av tall.</p>
     </div>
     <div class="ravens">
       <div class="raven-card reveal">
         <div class="step">01</div>
-        <h3>Normaltilstand</h3>
-        <p>Bygger over uker og måneder et bilde av hvordan nettopp denne maskinen oppfører seg når den er frisk. Ingenting er forhåndsinnstilt — alt læres fra maskinen selv.</p>
+        <h3>Lærer bilen</h3>
+        <p>Over uker bygger Munin et bilde av hvordan nettopp denne bilen oppfører seg, slik den er. Ingenting er forhåndsinnstilt for biltype eller motor.</p>
       </div>
       <div class="raven-card reveal">
         <div class="step">02</div>
-        <h3>Degradering</h3>
-        <p>Når mønsteret begynner å gli, ser Munin det i sammenheng — ikke som et enkeltutslag, men som en tilstand i endring.</p>
+        <h3>Setter referansen</h3>
+        <p>Når bilen har kjørt nok, fryser Munin en referanse for hvert system. Den følger bilen gjennom første år og låses på årsdagen.</p>
       </div>
       <div class="raven-card reveal">
         <div class="step">03</div>
-        <h3>Risiko</h3>
-        <p>Vurderer hva endringen betyr for veien videre, og gir én klar konklusjon du kan planlegge vedlikehold etter — ikke støyen bak.</p>
+        <h3>Måler og vurderer</h3>
+        <p>Hver tur måles mot referansen. Analyselaget, Hugin, vurderer hele turen og skriver hva som bør følges med på eller sjekkes. Om noe skal byttes, avgjør verkstedet.</p>
       </div>
     </div>
   </div>
@@ -445,8 +477,9 @@
 <section class="principles">
   <div class="wrap">
     <p class="eyebrow reveal" style="text-align:center;margin-bottom:48px">Hva Munin lover</p>
-    <p class="principle reveal">Stillhet er bedre enn en <em>falsk alarm</em>. Munin sier ifra når den er trygg — ikke for å fylle skjermen.</p>
-    <p class="principle reveal">Systemet <em>foreslår</em>. Mennesket bestemmer. Du sitter alltid med siste ord.</p>
+    <p class="principle reveal">Stillhet er bedre enn en <em>feilaktig diagnose</em>. Munin sier fra når dataene bærer det.</p>
+    <p class="principle reveal">Systemet <em>foreslår</em>. Eieren bestemmer.</p>
+    <p class="principle reveal">Et tall står <em>aldri alene</em>. Munin sier alltid hva det er verdt.</p>
   </div>
 </section>
 
@@ -454,7 +487,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <p class="eyebrow">Under panseret</p>
-      <h2>Bygget for å kjøre i bilen — ikke i skyen.</h2>
+      <h2>Læringen skjer i bilen.</h2>
     </div>
     <div class="tech-video reveal">
       <video class="tech-vid" autoplay muted loop playsinline
@@ -462,30 +495,44 @@
         <source src="video/device.mp4" type="video/mp4">
       </video>
       <div class="tech-vid-overlay"></div>
-      <p class="tech-cap mono">Levende signaler gjennom bilens nervesystem — lest, ikke styrt.</p>
+      <p class="tech-cap mono">Data fra bilens egne sensorer, lest og aldri endret.</p>
     </div>
     <div class="spec-grid reveal">
       <div class="spec">
         <p class="k">Maskinvare</p>
         <p class="v">Jetson Orin Nano Super</p>
-        <p class="d">AI-beregningene kjører på en Ampere-GPU med tensorkjerner, 67 TOPS. Læring og analyse skjer lokalt, på enheten.</p>
+        <p class="d">Overvåkingen under kjøring går lokalt på enheten. Etter turen trener Munin modellene sine på enhetens GPU. Læringen er ikke avhengig av nett.</p>
       </div>
       <div class="spec">
         <p class="k">Datagrunnlag</p>
-        <p class="v">OBD-II i dag — passiv observatør</p>
-        <p class="d">Dataene er råstoff, ikke målet. Arkitekturen er agnostisk mot kilde; verdien ligger i hva systemet lærer av dem over tid. Munin sender aldri kommandoer til maskinen.</p>
+        <p class="v">OBD-II, passiv lytter</p>
+        <p class="d">Munin leser bilens standard diagnosedata og sender aldri noe som endrer bilen. Flere datakilder, som direkte lesing av bilens CAN-buss, er planlagt.</p>
       </div>
       <div class="spec">
         <p class="k">Hvor det skjer</p>
-        <p class="v">Læring om bord, dyp analyse hos Hugin</p>
-        <p class="d">Den løpende læringen av maskinens normaltilstand kjører lokalt på enheten. Når en grundig vurdering trengs, sendes utvalgte data til et kraftigere resonneringslag.</p>
+        <p class="v">Læring i bilen, rapporten fra Hugin</p>
+        <p class="d">Overvåkingen og læringen skjer på enheten. Når en rapport lages, sendes et utvalg av turens data til en stor språkmodell i skyen, Claude fra Anthropic, som skriver vurderingen. Automatiske rapporter er av til eieren slår dem på.</p>
       </div>
       <div class="spec">
         <p class="k">Tilnærming</p>
         <p class="v">Selvlærende, ikke hardkodet</p>
-        <p class="d">I stedet for faste terskler bygger Munin sin egen forståelse av hva som er normalt for hver enkelt maskin.</p>
+        <p class="d">Ingen faste terskler per biltype. Munin bygger sin egen forståelse av hver enkelt bil, og en ny bil får sin egen profil automatisk.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="status">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Status og grenser</h2>
+    </div>
+    <ul class="status-list reveal">
+        <li>Munin er en prototype i daglig drift i én testbil (Land Rover Freelander 2, diesel).</li>
+        <li>Referansen følger bilen gjennom første år. Den er ikke låst ennå på noen bil.</li>
+        <li>Vinterkjøring er ikke sett ennå. Første vinter vil Munin si at kulden er ukjent, ikke late som.</li>
+        <li>Evnen til å se endring er vist i felt for kjølesystemet, og med innlagte testfeil for luftsystemet. For trykk og mekanikk er den ikke vist ennå.</li>
+    </ul>
   </div>
 </section>
 
@@ -493,14 +540,14 @@
   <div class="wrap reveal">
     <p class="eyebrow" style="margin-bottom:18px">Testbiler</p>
     <h2>Nye biler å lære av</h2>
-    <p>Munin utvikles videre på reelle biler, og jeg tar gjerne imot flere — særlig rene diesel- og bensinmotorer. Det krever ingen langtidsforpliktelse: koble til, laste inn en profil, en kjøretur og en grundig vurdering. Jeg holder til i nærheten av Ålesund. Er du nysgjerrig på hva systemet finner i din bil, er det bare å ta kontakt.</p>
+    <p>Munin utvikles på ekte biler, og jeg tar gjerne imot flere. Jeg søker særlig bensinbiler med seks eller åtte sylindre, og biler av andre merker enn den jeg har. Det krever ingen langvarig forpliktelse: Munin kobles til, du kjører én tur, og du får en vurdering av bilen. Bilen må ha norsk registreringsnummer. Jeg holder til i nærheten av Ålesund.</p>
     <a class="btn" href="mailto:hartmann.petter@gmail.com">Ta kontakt</a>
   </div>
 </section>
 
 <section class="origin">
   <div class="wrap reveal">
-    <p class="origin-text"><span class="origin-mark">Om navnet.</span> I norrøn mytologi var Munin en av Odins to ravner — den som fløy ut over verden, observerte, og bar kunnskap tilbake. Det er omtrent det systemet gjør: lytter stille, og forteller deg bare det som betyr noe.</p>
+    <p class="origin-text"><span class="origin-mark">Om navnet.</span> I norrøn mytologi hadde Odin to ravner. Munin, minnet, fløy ut over verden, så og husket, og bar kunnskapen tilbake. Hugin, tanken, er navnet på analyselaget som skriver rapportene.</p>
   </div>
 </section>
 
