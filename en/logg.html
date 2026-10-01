@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munin — progress</title>
+<meta name="description" content="Progress log for Munin, self-learning vehicle diagnostics. Reports from real drives, milestones in the system and findings along the way.">
+<link rel="canonical" href="https://munin-diagnostics.com/en/logg.html">
+<link rel="alternate" hreflang="no" href="https://munin-diagnostics.com/logg.html">
+<link rel="alternate" hreflang="en" href="https://munin-diagnostics.com/en/logg.html">
+<link rel="alternate" hreflang="x-default" href="https://munin-diagnostics.com/logg.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0a0e1a;--night-2:#0f1524;--ice:#e8edf5;--ice-dim:#8b95a8;
+    --raven:#5b7c9d;--raven-glow:#7da3cc;--ember:#c9a25e;
+    --line:rgba(123,140,168,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--night);color:var(--ice);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 28px}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:0.02em}
+
+  /* top nav */
+  .topnav{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:26px 28px;max-width:980px;margin:0 auto;
+    border-bottom:1px solid var(--line);
+  }
+  .topnav-brand{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.22em;color:var(--ice)}
+  .topnav-link{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ice-dim);text-decoration:none;letter-spacing:0.06em;transition:color 0.3s}
+  .topnav-link:hover{color:var(--raven-glow)}
+  .topnav-right{display:flex;align-items:center;gap:22px}
+  .lang{font-size:12px;letter-spacing:0.12em;color:var(--ice-dim)}
+  .lang a{color:var(--ice-dim);text-decoration:none;transition:color 0.3s}
+  .lang a:hover{color:var(--raven-glow)}
+  .lang .on{color:var(--ice)}
+
+  /* header */
+  .loghead{padding:80px 0 50px}
+  .loghead .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.22em;color:var(--raven);margin-bottom:18px}
+  .loghead h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(40px,6.5vw,68px);line-height:1.0;letter-spacing:-0.02em;margin-bottom:20px}
+  .loghead h1 em{font-style:italic;color:var(--raven-glow)}
+  .loghead p{color:var(--ice-dim);font-size:18px;max-width:560px}
+
+  /* filter */
+  .filters{display:flex;gap:10px;margin:36px 0 10px;flex-wrap:wrap}
+  .filter{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    color:var(--ice-dim);background:transparent;
+    border:1px solid var(--line);border-radius:100px;
+    padding:7px 16px;cursor:pointer;transition:all 0.25s;letter-spacing:0.04em;
+  }
+  .filter:hover{border-color:var(--raven)}
+  .filter.active{background:var(--raven-glow);color:var(--night);border-color:var(--raven-glow)}
+
+  /* timeline */
+  .timeline{padding:30px 0 100px;position:relative}
+  .timeline::before{
+    content:'';position:absolute;left:11px;top:40px;bottom:60px;width:1px;
+    background:linear-gradient(180deg,var(--line),transparent);
+  }
+  .entry{
+    position:relative;padding-left:48px;margin-bottom:14px;
+    transition:opacity 0.4s, transform 0.4s;
+  }
+  .entry::before{
+    content:'';position:absolute;left:5px;top:30px;
+    width:13px;height:13px;border-radius:50%;
+    background:var(--night);border:2px solid var(--raven);
+    transition:border-color 0.3s, box-shadow 0.3s;
+  }
+  .entry.milestone::before{
+    border-color:var(--ember);
+    box-shadow:0 0 0 4px rgba(201,162,94,0.12);
+  }
+  .entry-card{
+    background:var(--night-2);border:1px solid var(--line);
+    border-radius:14px;padding:26px 28px;
+    transition:border-color 0.35s, transform 0.35s;
+  }
+  .entry-card:hover{border-color:rgba(125,163,204,0.32);transform:translateY(-2px)}
+  .entry-meta{display:flex;gap:14px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+  .entry-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ice-dim);letter-spacing:0.04em}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:10.5px;
+    text-transform:uppercase;letter-spacing:0.12em;
+    padding:4px 11px;border-radius:100px;border:1px solid var(--line);
+  }
+  .tag-rapport{color:var(--raven-glow);border-color:rgba(125,163,204,0.4)}
+  .tag-milepael{color:var(--ember);border-color:rgba(201,162,94,0.4)}
+  .tag-bilde{color:var(--ice-dim)}
+  .entry-car{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ice-dim);margin-left:auto}
+  .entry-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:23px;line-height:1.2;margin-bottom:10px}
+  .entry-card p{color:var(--ice-dim);font-size:15.5px}
+  .entry-img{
+    width:100%;border-radius:10px;margin-top:18px;display:block;
+    border:1px solid var(--line);background:var(--night);
+  }
+  .entry-link{
+    display:inline-block;margin-top:16px;
+    font-family:'JetBrains Mono',monospace;font-size:13px;
+    color:var(--raven-glow);text-decoration:none;
+    border-bottom:1px solid rgba(125,163,204,0.3);padding-bottom:2px;
+    transition:border-color 0.3s;
+  }
+  .entry-link:hover{border-color:var(--raven-glow)}
+
+  .empty{
+    text-align:center;padding:70px 0;color:var(--ice-dim);
+    font-family:'JetBrains Mono',monospace;font-size:14px;
+  }
+
+  footer{padding:46px 0;border-top:1px solid var(--line);color:var(--ice-dim);font-size:13px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  .mono.dim{color:var(--ice-dim);font-size:12px}
+
+  .reveal{opacity:0;transform:translateY(18px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity 0.7s ease,transform 0.7s cubic-bezier(.2,.8,.2,1)}
+
+  /* ── SEO-fallback: statisk innhold for crawlere/uten JS.
+        Skjules straks JavaScript overtar (se .js-on-regel under). ── */
+  .noscript-fallback .entry-card{
+    background:var(--night-2);border:1px solid var(--line);
+    border-radius:14px;padding:26px 28px;margin-bottom:14px;
+  }
+  .noscript-fallback h3{font-family:'Fraunces',serif;font-weight:500;font-size:23px;line-height:1.2;margin-bottom:10px}
+  .noscript-fallback p{color:var(--ice-dim);font-size:15.5px}
+  .noscript-fallback .entry-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ice-dim);display:block;margin-bottom:8px}
+  .js-on .noscript-fallback{display:none}
+
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  @media(max-width:620px){.loghead{padding:54px 0 36px}.entry{padding-left:40px}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html" class="topnav-link">← Munin</a>
+  <div class="topnav-right">
+    <span class="topnav-brand">PROGRESS</span>
+    <span class="lang mono"><a href="../logg.html" hreflang="no" lang="no">NO</a> · <span class="on">EN</span></span>
+  </div>
+</nav>
+
+<header class="loghead">
+  <div class="wrap">
+    <p class="eyebrow">Logbook</p>
+    <h1>What Munin <em>has seen</em>.</h1>
+    <p>An open log of the development: reports from real drives, milestones in the system, and findings along the way. Updated as the work progresses.</p>
+    <div class="filters" id="filters">
+      <button class="filter active" data-f="alle">All</button>
+      <button class="filter" data-f="rapport">Reports</button>
+      <button class="filter" data-f="milepael">Milestones</button>
+      <button class="filter" data-f="bilde">Images</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- ────────────────────────────────────────────────────────────
+       STATISK SEO-FALLBACK — de nyeste oppføringene som ren HTML.
+       Dette er det Google og søkemotorer leser (de kjører ikke JS).
+       Brukere ser aldri dette: .js-on-klassen skjuler den straks
+       JavaScript kjører, og #timeline nedenfor tar over.
+
+       ⚠ VEDLIKEHOLD: denne blokken oppdateres IKKE automatisk når du
+       legger til nye oppføringer i LOGG-arrayen lenger ned. Når du
+       legger til noe viktig nytt, kopier de nyeste inn her også.
+       Permanent, vedlikeholdsfri løsning står i roadmap.md (GitHub Action).
+       ──────────────────────────────────────────────────────────── -->
+  <div class="noscript-fallback">
+    <!-- FALLBACK:START -->
+    <article class="entry-card">
+      <span class="entry-date">September 2026 · Milestone · Freelander 2 · TD4</span>
+      <h3>The on-board AI chip has started learning</h3>
+      <p>After months of data collection, the car has enough driving data for every signal group to be trained. Each group gets its own model on the on-board AI chip, trained solely on this car's healthy state. The first ones are done, and the rest will follow. From there, Munin can see when a pattern starts to drift, before it becomes a fault.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">September 2026 · Report · Freelander 2 · TD4</span>
+      <h3>First monthly report, no human involved</h3>
+      <p>All three report types are now working, and the first monthly report was written and sent entirely on its own. From the moment the schedule triggered until the PDF landed in the inbox, nobody touched it. The report arrived a few drives after the thermostat was replaced, and closes the loop from June: Munin found the leaking thermostat, the replacement was logged in the service record, and Munin now confirms that the new one holds the temperature steady where it should. Finding, repair and confirmation in one system.</p>
+      <a class="entry-link" href="../images/report_2026-09-27_15-54-19_standard.pdf">Read the report (PDF) →</a>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">June 2026 · Image</span>
+      <h3>The journey to the next generation has begun</h3>
+      <p>Munin couldn't keep up with its tasks on a Raspberry Pi 5. So we're biting the bullet and migrating to new hardware: a platform with a CPU and a GPU built for AI on the same device.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">June 2026 · Milestone</span>
+      <h3>Munin learns its own healthy state</h3>
+      <p>The system got a fixed reference point for how the car looks when it is healthy, so a gradual change can be measured against something stable instead of slipping by unnoticed. Munin freezes this point on its own once the car has shown what it needs to, and can reset it when a part is actually replaced.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">June 2026 · Milestone</span>
+      <h3>Service reminders tied to what the car actually needs</h3>
+      <p>A dedicated maintenance track with intervals per car and a service log the system itself helps keep in order. When something is replaced, this tells Munin to learn the car's new healthy state from scratch.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">June 2026 · Report · Freelander 2 · TD4</span>
+      <h3>Thermostat fault found before it set a fault code</h3>
+      <p>From three months of driving data, several independent signs pointed to the same failure: the engine did not reach the correct temperature under load, and dropped unusually fast when the foot came off the throttle. A leaking thermostat, caught long before it would have triggered a warning light. Munin's first real field diagnosis.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">June 2026 · Report</span>
+      <h3>An important gap in the system found and closed</h3>
+      <p>A review revealed that the anomaly detection compared the car against itself in the moment, not against a healthy past. A car with a fault from day one would then learn the fault as normal. The finding triggered the entire work on the fixed reference point.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">June 2026 · Milestone · Freelander 2 · TD4</span>
+      <h3>Assessing a used car before you buy it</h3>
+      <p>Added a third report type, used-car assessment: Munin combines the car's own measurements with known weaknesses for that exact model and year, gathered from outside sources. Instead of just reading the car in front of you, it knows what to look for on that particular type of car.</p>
+      <a class="entry-link" href="../images/report_2026-06-28_11-02-04_STassessment.pdf">See example report (PDF, Norwegian) →</a>
+    </article>
+    <!-- FALLBACK:END -->
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mono">MUNIN · DIAGNOSTICS</span>
+    <span class="mono dim">Self-learning vehicle diagnostics · built in Norway</span>
+  </div>
+</footer>
+
+<script>
+  /* Signaliser at JS er på → skjuler den statiske fallbacken over. */
+  document.body.classList.add('js-on');
+
+  /* ───────────────────────────────────────────────────────────
+     FREMGANGSLOGG — rediger denne listen for å legge til oppføringer.
+     Nyeste øverst. Felter:
+       dato     — vises som den er, f.eks. "Juni 2026"
+       type     — "rapport" | "milepael" | "bilde"
+       tittel   — overskrift
+       bil      — valgfritt, f.eks. "Freelander 2 · TD4" (utelat med "")
+       tekst    — beskrivelse
+       bilde    — valgfri filsti, f.eks. "images/logg/tur-01.jpg" (utelat med "")
+       lenke    — valgfri { tekst, url } for f.eks. en PDF-rapport (utelat med null)
+     ─────────────────────────────────────────────────────────── */
+  const LOGG = [
+    {
+      dato:"September 2026",
+      type:"milepael",
+      tittel:"The on-board AI chip has started learning",
+      bil:"Freelander 2 · TD4",
+      tekst:"After months of data collection, the car has enough driving data for every signal group to be trained. Each group gets its own model on the on-board AI chip, trained solely on this car's healthy state. The first ones are done, and the rest will follow. From there, Munin can see when a pattern starts to drift, before it becomes a fault.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"September 2026",
+      type:"rapport",
+      tittel:"First monthly report, no human involved",
+      bil:"Freelander 2 · TD4",
+      tekst:"All three report types are now working, and the first monthly report was written and sent entirely on its own. From the moment the schedule triggered until the PDF landed in the inbox, nobody touched it. The report arrived a few drives after the thermostat was replaced, and closes the loop from June: Munin found the leaking thermostat, the replacement was logged in the service record, and Munin now confirms that the new one holds the temperature steady where it should. Finding, repair and confirmation in one system.",
+      bilde:"",
+      lenke:{ tekst:"Read the report (PDF)", url:"../images/report_2026-09-27_15-54-19_standard.pdf" }
+    },
+    {
+      dato:"June 2026",
+      type:"bilde",
+      tittel:"The journey to the next generation has begun",
+      bil:"",
+      tekst:"Munin couldn't keep up with its tasks on a Raspberry Pi 5. So we're biting the bullet and migrating to new hardware: a platform with a CPU and a GPU built for AI on the same device.",
+      bilde:"../images/PXL_20260630_083604202.jpg",
+      lenke:null
+    },
+    {
+      dato:"June 2026",
+      type:"milepael",
+      tittel:"Munin learns its own healthy state",
+      bil:"",
+      tekst:"The system got a fixed reference point for how the car looks when it is healthy, so a gradual change can be measured against something stable instead of slipping by unnoticed. Munin freezes this point on its own once the car has shown what it needs to, and can reset it when a part is actually replaced.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"June 2026",
+      type:"milepael",
+      tittel:"Service reminders tied to what the car actually needs",
+      bil:"",
+      tekst:"A dedicated maintenance track with intervals per car and a service log the system itself helps keep in order. When something is replaced, this tells Munin to learn the car's new healthy state from scratch.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"June 2026",
+      type:"rapport",
+      tittel:"Thermostat fault found before it set a fault code",
+      bil:"Freelander 2 · TD4",
+      tekst:"From three months of driving data, several independent signs pointed to the same failure: the engine did not reach the correct temperature under load, and dropped unusually fast when the foot came off the throttle. A leaking thermostat, caught long before it would have triggered a warning light. Munin's first real field diagnosis.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"June 2026",
+      type:"rapport",
+      tittel:"An important gap in the system found and closed",
+      bil:"",
+      tekst:"A review revealed that the anomaly detection compared the car against itself in the moment, not against a healthy past. A car with a fault from day one would then learn the fault as normal. The finding triggered the entire work on the fixed reference point.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"June 2026",
+      type:"milepael",
+      tittel:"Assessing a used car before you buy it",
+      bil:"Freelander 2 · TD4",
+      tekst:"Added a third report type, used-car assessment: Munin combines the car's own measurements with known weaknesses for that exact model and year, gathered from outside sources. Instead of just reading the car in front of you, it knows what to look for on that particular type of car.",
+      bilde:"",
+      lenke:{ tekst:"See example report (PDF, Norwegian)", url:"../images/report_2026-06-28_11-02-04_STassessment.pdf" }
+    },
+    {
+      dato:"June 2026",
+      type:"rapport",
+      tittel:"Reports got smarter and far cheaper to produce",
+      bil:"",
+      tekst:"More report types for different needs, a regular health check and a thorough workshop assessment, powered by stronger reasoning where it is needed. At the same time, the cost of producing them was cut by around 80 percent through tighter control of how much data each report needs.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"June 2026",
+      type:"rapport",
+      tittel:"Large parts of the system cleaned up and secured",
+      bil:"",
+      tekst:"Heavy modules were split up and simplified, and fixed checkpoints were built to catch any unintended change in the core. A foundation for building further without backing into old mistakes.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"April 2026",
+      type:"rapport",
+      tittel:"Temperature monitoring that understands the seasons",
+      bil:"",
+      tekst:"The thermal monitoring was split up and made smarter, with a threshold that adjusts to the season instead of a fixed number. It tells a cold winter day apart from an actual fault.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"April 2026",
+      type:"milepael",
+      tittel:"A neural network that learns the car's own patterns",
+      bil:"",
+      tekst:"A model trained solely on the car's own history, running on the dedicated AI chip on board. It learns how the car's signals relate to each other when everything is healthy, and flags when the pattern breaks from what it has seen before.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"March 2026",
+      type:"milepael",
+      tittel:"Munin writes its first full diagnosis",
+      bil:"",
+      tekst:"Findings from an entire drive are condensed to the essentials and sent to a powerful reasoning layer that puts together a complete report. Triggered automatically by new faults, monthly, and after service.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"March 2026",
+      type:"milepael",
+      tittel:"The rule engine that never sleeps",
+      bil:"",
+      tekst:"A deterministic layer that evaluates the car's signals at every single measurement (pressure, air, combustion, temperature and mechanics) and keeps track of fault codes. The solid foundation beneath the learning part.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"March 2026",
+      type:"milepael",
+      tittel:"Works on a new car without manual setup",
+      bil:"",
+      tekst:"The system reads the car's identity and builds a signal profile tailored to it automatically. The foundation for Munin to be connected to a car it has never seen, and get going on its own.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"February 2026",
+      type:"milepael",
+      tittel:"The physical foundation in place",
+      bil:"",
+      tekst:"Munin's hardware foundation: power button, status lights, safe shutdown, and a stable connection to the car's OBD port. Everything else was built from here.",
+      bilde:"",
+      lenke:null
+    }
+  ];
+
+  const tl=document.getElementById('timeline');
+  const TAGTXT={rapport:"Report",milepael:"Milestone",bilde:"Image"};
+
+  function render(filter){
+    const items=LOGG.filter(e=>filter==='alle'||e.type===filter);
+    if(items.length===0){
+      tl.innerHTML='<div class="empty">No entries here yet.</div>';
+      return;
+    }
+    tl.innerHTML=items.map(e=>`
+      <article class="entry reveal ${e.type==='milepael'?'milestone':''}">
+        <div class="entry-card">
+          <div class="entry-meta">
+            <span class="entry-date">${e.dato}</span>
+            <span class="tag tag-${e.type}">${TAGTXT[e.type]||e.type}</span>
+            ${e.bil?`<span class="entry-car">${e.bil}</span>`:''}
+          </div>
+          <h3>${e.tittel}</h3>
+          <p>${e.tekst}</p>
+          ${e.bilde?`<img class="entry-img" src="${e.bilde}" alt="${e.tittel}" loading="lazy">`:''}
+          ${e.lenke?`<a class="entry-link" href="${e.lenke.url}">${e.lenke.tekst} →</a>`:''}
+        </div>
+      </article>
+    `).join('');
+    observe();
+  }
+
+  let io;
+  function observe(){
+    if(io)io.disconnect();
+    io=new IntersectionObserver((es)=>{
+      es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})
+    },{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  }
+
+  document.getElementById('filters').addEventListener('click',ev=>{
+    const b=ev.target.closest('.filter');if(!b)return;
+    document.querySelectorAll('.filter').forEach(f=>f.classList.remove('active'));
+    b.classList.add('active');
+    render(b.dataset.f);
+  });
+
+  render('alle');
+</script>
+<script data-goatcounter="https://munin.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
