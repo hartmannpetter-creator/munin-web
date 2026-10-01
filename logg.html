@@ -6,6 +6,9 @@
 <title>Munin — fremgang</title>
 <meta name="description" content="Fremgangslogg for Munin — selvlærende bildiagnostikk. Rapporter fra ekte kjøreturer, milepæler i systemet og funn underveis.">
 <link rel="canonical" href="https://munin-diagnostics.com/logg.html">
+<link rel="alternate" hreflang="no" href="https://munin-diagnostics.com/logg.html">
+<link rel="alternate" hreflang="en" href="https://munin-diagnostics.com/en/logg.html">
+<link rel="alternate" hreflang="x-default" href="https://munin-diagnostics.com/logg.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,6 +33,11 @@
   .topnav-brand{font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.22em;color:var(--ice)}
   .topnav-link{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ice-dim);text-decoration:none;letter-spacing:0.06em;transition:color 0.3s}
   .topnav-link:hover{color:var(--raven-glow)}
+  .topnav-right{display:flex;align-items:center;gap:22px}
+  .lang{font-size:12px;letter-spacing:0.12em;color:var(--ice-dim)}
+  .lang a{color:var(--ice-dim);text-decoration:none;transition:color 0.3s}
+  .lang a:hover{color:var(--raven-glow)}
+  .lang .on{color:var(--ice)}
 
   /* header */
   .loghead{padding:80px 0 50px}
@@ -132,7 +140,10 @@
 
 <nav class="topnav">
   <a href="index.html" class="topnav-link">← Munin</a>
-  <span class="topnav-brand">FREMGANG</span>
+  <div class="topnav-right">
+    <span class="topnav-brand">FREMGANG</span>
+    <span class="lang mono"><span class="on">NO</span> · <a href="en/logg.html" hreflang="en" lang="en">EN</a></span>
+  </div>
 </nav>
 
 <header class="loghead">
@@ -162,6 +173,7 @@
        Permanent, vedlikeholdsfri løsning står i roadmap.md (GitHub Action).
        ──────────────────────────────────────────────────────────── -->
   <div class="noscript-fallback">
+    <!-- FALLBACK:START -->
     <article class="entry-card">
       <span class="entry-date">September 2026 · Milepæl · Freelander 2 · TD4</span>
       <h3>AI-brikken om bord har begynt å lære</h3>
@@ -170,12 +182,13 @@
     <article class="entry-card">
       <span class="entry-date">September 2026 · Rapport · Freelander 2 · TD4</span>
       <h3>Første månedsrapport, uten menneskehånd</h3>
-      <p>Alle tre rapporttypene virker nå, og den første månedsrapporten ble skrevet og sendt helt på egen hånd. Fra kalenderen slo inn til PDF-en lå i innboksen, rørte ingen noe. Rapporten gir sammendraget først, og deretter det som betyr noe. Konsekvensen står i klartekst, og det står hva verkstedet bør se på. Neste månedsrapport får tettere data på de viktigste signalene og vurderingen fra de nye modellene.</p>
+      <p>Alle tre rapporttypene virker nå, og den første månedsrapporten ble skrevet og sendt helt på egen hånd. Fra kalenderen slo inn til PDF-en lå i innboksen, rørte ingen noe. Rapporten kom få turer etter at termostaten ble byttet, og lukker sirkelen fra juni: Munin fant den lekke termostaten, byttet ble ført i serviceloggen, og nå bekrefter Munin at den nye holder temperaturen stabil der den skal. Funn, reparasjon og bekreftelse i samme system.</p>
+      <a class="entry-link" href="images/report_2026-09-27_15-54-19_standard.pdf">Se rapporten (PDF, engelsk) →</a>
     </article>
     <article class="entry-card">
       <span class="entry-date">Juni 2026 · Bilde</span>
       <h3>Reisen mot neste generasjon har begynt</h3>
-      <p>Munin er født på en Raspberry Pi, men neste steg er allerede i gang: en plattform som samler CPU, GPU og NPU på samme enhet — slik at bilen kan lære sin egen friske tilstand på nytt om bord, uten en datamaskin ved siden av.</p>
+      <p>Munin klarte ikke oppgavene sine på Raspberry Pi 5. Nå biter vi i det sure eplet 🍎 og migrerer til ny maskinvare: en plattform med CPU og en GPU bygget for AI på samme enhet.</p>
     </article>
     <article class="entry-card">
       <span class="entry-date">Juni 2026 · Milepæl</span>
@@ -198,10 +211,12 @@
       <p>En gjennomgang avdekket at avviksdeteksjonen sammenlignet bilen mot seg selv i øyeblikket, ikke mot en frisk fortid. En bil med en feil fra første dag ville da lære feilen som normal. Funnet utløste hele arbeidet med det faste referansepunktet.</p>
     </article>
     <article class="entry-card">
-      <span class="entry-date">Juni 2026 · Milepæl</span>
+      <span class="entry-date">Juni 2026 · Milepæl · Freelander 2 · TD4</span>
       <h3>Vurderer en bruktbil før du kjøper den</h3>
-      <p>En egen vurderingstype rettet mot bilkjøp: Munin kobler bilens egne måledata mot kjente svakheter for nettopp den modellen og årgangen. I stedet for bare å lese bilen foran deg, vet den hva den skal se etter på akkurat den biltypen.</p>
+      <p>Lagt til en tredje rapporttype, bruktbilvurdering: Munin kobler bilens egne måledata mot kjente svakheter for nettopp den modellen og årgangen, hentet inn utenfra. I stedet for bare å lese bilen foran deg, vet den hva den skal se etter på akkurat den biltypen.</p>
+      <a class="entry-link" href="images/report_2026-06-28_11-02-04_STassessment.pdf">Se eksempelrapport →</a>
     </article>
+    <!-- FALLBACK:END -->
   </div>
 
   <div class="timeline" id="timeline"></div>
@@ -244,17 +259,35 @@
       type:"rapport",
       tittel:"Første månedsrapport, uten menneskehånd",
       bil:"Freelander 2 · TD4",
-      tekst:"Alle tre rapporttypene virker nå, og den første månedsrapporten ble skrevet og sendt helt på egen hånd. Fra kalenderen slo inn til PDF-en lå i innboksen, rørte ingen noe. Rapporten gir sammendraget først, og deretter det som betyr noe. Konsekvensen står i klartekst, og det står hva verkstedet bør se på. Neste månedsrapport får tettere data på de viktigste signalene og vurderingen fra de nye modellene.",
+      tekst:"Alle tre rapporttypene virker nå, og den første månedsrapporten ble skrevet og sendt helt på egen hånd. Fra kalenderen slo inn til PDF-en lå i innboksen, rørte ingen noe. Rapporten kom få turer etter at termostaten ble byttet, og lukker sirkelen fra juni: Munin fant den lekke termostaten, byttet ble ført i serviceloggen, og nå bekrefter Munin at den nye holder temperaturen stabil der den skal. Funn, reparasjon og bekreftelse i samme system.",
       bilde:"",
-      lenke:null
+      lenke:{ tekst:"Se rapporten (PDF, engelsk)", url:"images/report_2026-09-27_15-54-19_standard.pdf" }
     },
     {
       dato:"Juni 2026",
       type:"bilde",
       tittel:"Reisen mot neste generasjon har begynt",
       bil:"",
-      tekst:"Munin klarte ikke oppgavene sine på Raspberry Pi 5. Nå biter vi i det sure eplet 🍎 og migrerer til ny maskinvare: en plattform som samler CPU, GPU og NPU på samme enhet.",
+      tekst:"Munin klarte ikke oppgavene sine på Raspberry Pi 5. Nå biter vi i det sure eplet 🍎 og migrerer til ny maskinvare: en plattform med CPU og en GPU bygget for AI på samme enhet.",
       bilde:"images/PXL_20260630_083604202.jpg",
+      lenke:null
+    },
+    {
+      dato:"Juni 2026",
+      type:"milepael",
+      tittel:"Munin lærer å kjenne sin egen friske tilstand",
+      bil:"",
+      tekst:"Systemet fikk et fast referansepunkt for hvordan bilen ser ut når den er frisk, slik at en gradvis endring kan måles mot noe stabilt i stedet for å gli umerkelig forbi. Munin fryser dette punktet av seg selv når bilen har vist det den trenger, og kan tilbakestille det når en del faktisk byttes.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"Juni 2026",
+      type:"milepael",
+      tittel:"Servicepåminnelser knyttet til hva bilen faktisk trenger",
+      bil:"",
+      tekst:"Et eget spor for vedlikehold med intervaller per bil og en servicelogg systemet selv hjelper å holde orden i. Når noe byttes, forteller dette Munin at den skal lære bilens nye, friske tilstand på nytt.",
+      bilde:"",
       lenke:null
     },
     {
@@ -263,6 +296,15 @@
       tittel:"Termostatfeil funnet før den ga feilkode",
       bil:"Freelander 2 · TD4",
       tekst:"Fra tre måneders kjøredata pekte flere uavhengige spor mot samme svikt: motoren nådde ikke riktig temperatur under belastning, og falt unormalt raskt når foten gikk av gassen. En lekk termostat — fanget lenge før den ville utløst en varsellampe. Munins første ekte feltdiagnose.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"Juni 2026",
+      type:"rapport",
+      tittel:"Et viktig hull i systemet oppdaget — og tettet",
+      bil:"",
+      tekst:"En gjennomgang avdekket at avviksdeteksjonen sammenlignet bilen mot seg selv i øyeblikket, ikke mot en frisk fortid. En bil med en feil fra første dag ville da lære feilen som normal. Funnet utløste hele arbeidet med det faste referansepunktet.",
       bilde:"",
       lenke:null
     },
