@@ -114,8 +114,17 @@
     background:linear-gradient(90deg, rgba(10,14,26,0.80) 0%, rgba(10,14,26,0.45) 38%, rgba(10,14,26,0.05) 65%, rgba(10,14,26,0) 100%);
   }
   .hero-inner{position:relative;z-index:2}
-  .hero-logo{display:block;width:clamp(220px,30vw,360px);height:auto;margin-bottom:40px}
-  .topnav-right{margin-left:auto}
+  .nav-logo{display:block;line-height:0;flex-shrink:0}
+  .topnav-right{white-space:nowrap}
+  @media(max-width:400px){.nav-logo img{height:24px!important}.arr{display:none}}
+  .nav-logo img{height:46px;width:auto;display:block}
+  @media(max-width:620px){
+    .topnav{padding:22px 20px}
+    .nav-logo img{height:28px}
+    .topnav-right{gap:14px}
+    .topnav-link,.topnav-brand{font-size:12px}
+    .lang{font-size:11px}
+  }
   .topnav{
     position:absolute;top:0;left:0;right:0;z-index:5;
     display:flex;justify-content:space-between;align-items:center;
@@ -391,13 +400,13 @@
 <header class="hero">
   <div class="hero-bg"></div>
   <nav class="topnav">
+    <a class="nav-logo" href="./" aria-label="Munin Diagnostics"><img src="../images/munin_logo_stor_tekst_hvit.png" alt="Munin Diagnostics" width="2801" height="531"></a>
     <div class="topnav-right">
-      <a href="logg.html" class="topnav-link mono">Progress →</a>
+      <a href="logg.html" class="topnav-link mono">Progress<span class="arr"> →</span></a>
       <span class="lang mono"><a href="../" hreflang="no" lang="no">NO</a> · <span class="on">EN</span></span>
     </div>
   </nav>
   <div class="wrap hero-inner">
-    <img class="hero-logo" src="../images/munin_logo_stor_tekst_hvit.png" alt="Munin Diagnostics" width="2801" height="531">
     <h1>Sees the change <em>before the fault code</em>.</h1>
     <p class="lede"><strong>Munin learns how your particular car behaves</strong>, as it is when Munin is installed, and measures how far it moves away from that over months and years.</p>
     <div class="hero-meta">
