@@ -5,11 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ── SEO: tittel + beskrivelse (det Google viser i søk) ── -->
-<title>Munin — selvlærende bildiagnostikk</title>
+<title>Munin — prediktivt vedlikehold og bildiagnostikk</title>
 <meta name="description" content="Selvlærende bildiagnostikk for prediktivt vedlikehold. Munin lærer maskinens friske tilstand å kjenne og oppdager degradering før feilen kommer. OBD-basert i dag, kildeagnostisk arkitektur. Bygget i Norge.">
 <meta name="keywords" content="prediktivt vedlikehold, selvlærende diagnostikk, degradering, tilstandsovervåking, bildiagnostikk, OBD, prediktiv diagnose, maskinovervåking">
 <meta name="author" content="Petter Hartmann">
 <meta name="robots" content="index, follow">
+
+<!-- ── Språkversjoner: forteller Google at /en/ er den engelske utgaven ── -->
+<link rel="alternate" hreflang="no" href="https://munin-diagnostics.com/">
+<link rel="alternate" hreflang="en" href="https://munin-diagnostics.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://munin-diagnostics.com/">
 
 <!-- ── Canonical: fortell Google at HTTPS-apex er den rette URL-en ── -->
 <link rel="canonical" href="https://munin-diagnostics.com/">
@@ -26,7 +31,7 @@
 
 <!-- ── Twitter/X-kort ── -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Munin — selvlærende bildiagnostikk">
+<meta name="twitter:title" content="Munin — prediktivt vedlikehold og bildiagnostikk">
 <meta name="twitter:description" content="Munin lærer motorens friske tilstand og ser degraderingen før feilen kommer.">
 <meta name="twitter:image" content="https://munin-diagnostics.com/images/hero.jpg">
 
@@ -121,6 +126,11 @@
     letter-spacing:0.06em;transition:color 0.3s;
   }
   .topnav-link:hover{color:var(--raven-glow)}
+  .topnav-right{display:flex;align-items:center;gap:22px}
+  .lang{font-size:12px;letter-spacing:0.12em;color:var(--ice-dim)}
+  .lang a{color:var(--ice-dim);text-decoration:none;transition:color 0.3s}
+  .lang a:hover{color:var(--raven-glow)}
+  .lang .on{color:var(--ice)}
   .hero h1{
     font-family:'Fraunces',serif;
     font-weight:500;
@@ -363,7 +373,10 @@
   <div class="hero-bg"></div>
   <nav class="topnav">
     <span class="topnav-brand mono">MUNIN</span>
-    <a href="logg.html" class="topnav-link mono">Fremgang →</a>
+    <div class="topnav-right">
+      <a href="logg.html" class="topnav-link mono">Fremgang →</a>
+      <span class="lang mono"><span class="on">NO</span> · <a href="en/" hreflang="en" lang="en">EN</a></span>
+    </div>
   </nav>
   <div class="wrap hero-inner">
     <p class="eyebrow">Munin Diagnostics</p>
@@ -479,7 +492,7 @@
 <section class="cta">
   <div class="wrap reveal">
     <p class="eyebrow" style="margin-bottom:18px">Testbiler</p>
-    <h3>Nye biler å lære av</h3>
+    <h2>Nye biler å lære av</h2>
     <p>Munin utvikles videre på reelle biler, og jeg tar gjerne imot flere — særlig rene diesel- og bensinmotorer. Det krever ingen langtidsforpliktelse: koble til, laste inn en profil, en kjøretur og en grundig vurdering. Jeg holder til i nærheten av Ålesund. Er du nysgjerrig på hva systemet finner i din bil, er det bare å ta kontakt.</p>
     <a class="btn" href="mailto:hartmann.petter@gmail.com">Ta kontakt</a>
   </div>
