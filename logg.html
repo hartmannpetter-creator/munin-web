@@ -38,6 +38,17 @@
   .lang a{color:var(--ice-dim);text-decoration:none;transition:color 0.3s}
   .lang a:hover{color:var(--raven-glow)}
   .lang .on{color:var(--ice)}
+  .nav-logo{display:block;line-height:0;flex-shrink:0}
+  .topnav-right{white-space:nowrap}
+  @media(max-width:400px){.nav-logo img{height:24px!important}.arr{display:none}}
+  .nav-logo img{height:46px;width:auto;display:block}
+  @media(max-width:620px){
+    .topnav{padding:22px 20px}
+    .nav-logo img{height:28px}
+    .topnav-right{gap:14px}
+    .topnav-link,.topnav-brand{font-size:12px}
+    .lang{font-size:11px}
+  }
 
   /* header */
   .loghead{padding:80px 0 50px}
@@ -139,7 +150,7 @@
 <body>
 
 <nav class="topnav">
-  <a href="index.html" class="topnav-link">← Munin</a>
+  <a class="nav-logo" href="index.html" aria-label="Munin Diagnostics"><img src="images/munin_logo_stor_tekst_hvit.png" alt="Munin Diagnostics" width="2801" height="531"></a>
   <div class="topnav-right">
     <span class="topnav-brand">FREMGANG</span>
     <span class="lang mono"><span class="on">NO</span> · <a href="en/logg.html" hreflang="en" lang="en">EN</a></span>
