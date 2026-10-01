@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Munin — progress</title>
+<title>Munin · progress</title>
 <meta name="description" content="Progress log for Munin, self-learning vehicle diagnostics. Reports from real drives, milestones in the system and findings along the way.">
 <link rel="canonical" href="https://munin-diagnostics.com/en/logg.html">
 <link rel="alternate" hreflang="no" href="https://munin-diagnostics.com/logg.html">
@@ -162,7 +162,7 @@
 
 <main class="wrap">
   <!-- ────────────────────────────────────────────────────────────
-       STATISK SEO-FALLBACK — de nyeste oppføringene som ren HTML.
+       STATISK SEO-FALLBACK: de nyeste oppføringene som ren HTML.
        Dette er det Google og søkemotorer leser (de kjører ikke JS).
        Brukere ser aldri dette: .js-on-klassen skjuler den straks
        JavaScript kjører, og #timeline nedenfor tar over.
@@ -175,46 +175,45 @@
   <div class="noscript-fallback">
     <!-- FALLBACK:START -->
     <article class="entry-card">
+      <span class="entry-date">September 2026 · Milestone</span>
+      <h3>Ready for more devices</h3>
+      <p>A new Munin can now be set up from a USB stick with a single command, and updated over the network from the device's own page. Data is organised per car, so a car's history always stays with the right car. The next device will be set up exactly as a new user would do it.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">September 2026 · Report · Freelander 2 · TD4</span>
+      <h3>Tested against known faults</h3>
+      <p>To test Munin against faults with a known answer, the mass air flow sensor was disconnected for one drive. The report found it: the signal was stuck, the car had set a pending fault code, and the EGR valve was held closed as a result. On another drive the air filter was partly blocked. The report did not find that, because the change only showed at part load. Both results matter equally for the work ahead.</p>
+    </article>
+    <article class="entry-card">
       <span class="entry-date">September 2026 · Milestone · Freelander 2 · TD4</span>
-      <h3>The on-board AI chip has started learning</h3>
-      <p>After months of data collection, the car has enough driving data for every signal group to be trained. Each group gets its own model on the on-board AI chip, trained solely on this car's healthy state. The first ones are done, and the rest will follow. From there, Munin can see when a pattern starts to drift, before it becomes a fault.</p>
+      <h3>The reference is set</h3>
+      <p>All five system groups (cooling, slow cooling, air, pressure and mechanics) now have their own model, trained in the car on the car's own drives with no human involved. The first reference was frozen on 23 to 25 September. Through the first year the reference follows the car, so it sees every season. On the anniversary it locks.</p>
     </article>
     <article class="entry-card">
       <span class="entry-date">September 2026 · Report · Freelander 2 · TD4</span>
       <h3>First monthly report, no human involved</h3>
-      <p>All three report types are now working, and the first monthly report was written and sent entirely on its own. From the moment the schedule triggered until the PDF landed in the inbox, nobody touched it. The report arrived a few drives after the thermostat was replaced, and closes the loop from June: Munin found the leaking thermostat, the replacement was logged in the service record, and Munin now confirms that the new one holds the temperature steady where it should. Finding, repair and confirmation in one system.</p>
+      <p>The first automatic monthly report was made and sent on its due date, from the moment the schedule triggered until the PDF landed in the inbox, with nobody touching it. At the same time, Munin closed the loop from June: it found the thermostat fault, the replacement was logged in the service record, the reports after the replacement noticed the difference, and Munin now confirms that the new thermostat holds the temperature where it should. Finding, repair and confirmation in one system.</p>
       <a class="entry-link" href="../images/report_2026-09-27_15-54-19_standard.pdf">Read the report (PDF) →</a>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">September 2026 · Milestone</span>
+      <h3>One car, one identity</h3>
+      <p>Each car gets one locked identity (VIN) on all data, checked against the Norwegian Public Roads Administration using the owner's registration number. One car's history cannot be moved to another car.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">August 2026 · Milestone · Freelander 2 · TD4</span>
+      <h3>The whole chain with no human involved</h3>
+      <p>Switching off the ignition ends the drive. After the drive, the device learns from what it has seen and shuts down cleanly. Proven in the car, several times in a row.</p>
+    </article>
+    <article class="entry-card">
+      <span class="entry-date">July 2026 · Milestone</span>
+      <h3>Munin runs on Jetson</h3>
+      <p>Munin now runs in the car on a Jetson Orin Nano Super, with processor and GPU on the same device.</p>
     </article>
     <article class="entry-card">
       <span class="entry-date">June 2026 · Image</span>
       <h3>The journey to the next generation has begun</h3>
-      <p>Munin couldn't keep up with its tasks on a Raspberry Pi 5. So we're biting the bullet and migrating to new hardware: a platform with a CPU and a GPU built for AI on the same device.</p>
-    </article>
-    <article class="entry-card">
-      <span class="entry-date">June 2026 · Milestone</span>
-      <h3>Munin learns its own healthy state</h3>
-      <p>The system got a fixed reference point for how the car looks when it is healthy, so a gradual change can be measured against something stable instead of slipping by unnoticed. Munin freezes this point on its own once the car has shown what it needs to, and can reset it when a part is actually replaced.</p>
-    </article>
-    <article class="entry-card">
-      <span class="entry-date">June 2026 · Milestone</span>
-      <h3>Service reminders tied to what the car actually needs</h3>
-      <p>A dedicated maintenance track with intervals per car and a service log the system itself helps keep in order. When something is replaced, this tells Munin to learn the car's new healthy state from scratch.</p>
-    </article>
-    <article class="entry-card">
-      <span class="entry-date">June 2026 · Report · Freelander 2 · TD4</span>
-      <h3>Thermostat fault found before it set a fault code</h3>
-      <p>From three months of driving data, several independent signs pointed to the same failure: the engine did not reach the correct temperature under load, and dropped unusually fast when the foot came off the throttle. A leaking thermostat, caught long before it would have triggered a warning light. Munin's first real field diagnosis.</p>
-    </article>
-    <article class="entry-card">
-      <span class="entry-date">June 2026 · Report</span>
-      <h3>An important gap in the system found and closed</h3>
-      <p>A review revealed that the anomaly detection compared the car against itself in the moment, not against a healthy past. A car with a fault from day one would then learn the fault as normal. The finding triggered the entire work on the fixed reference point.</p>
-    </article>
-    <article class="entry-card">
-      <span class="entry-date">June 2026 · Milestone · Freelander 2 · TD4</span>
-      <h3>Assessing a used car before you buy it</h3>
-      <p>Added a third report type, used-car assessment: Munin combines the car's own measurements with known weaknesses for that exact model and year, gathered from outside sources. Instead of just reading the car in front of you, it knows what to look for on that particular type of car.</p>
-      <a class="entry-link" href="../images/report_2026-06-28_11-02-04_STassessment.pdf">See example report (PDF, Norwegian) →</a>
+      <p>The Raspberry Pi 5 could no longer handle the tasks Munin needs. Work to move Munin to a Jetson Orin Nano Super, with processor and AI GPU on the same device, has begun.</p>
     </article>
     <!-- FALLBACK:END -->
   </div>
@@ -234,23 +233,41 @@
   document.body.classList.add('js-on');
 
   /* ───────────────────────────────────────────────────────────
-     FREMGANGSLOGG — rediger denne listen for å legge til oppføringer.
+     FREMGANGSLOGG: rediger denne listen for å legge til oppføringer.
      Nyeste øverst. Felter:
-       dato     — vises som den er, f.eks. "Juni 2026"
-       type     — "rapport" | "milepael" | "bilde"
-       tittel   — overskrift
-       bil      — valgfritt, f.eks. "Freelander 2 · TD4" (utelat med "")
-       tekst    — beskrivelse
-       bilde    — valgfri filsti, f.eks. "images/logg/tur-01.jpg" (utelat med "")
-       lenke    — valgfri { tekst, url } for f.eks. en PDF-rapport (utelat med null)
+       dato    : vises som den er, f.eks. "Juni 2026"
+       type    : "rapport" | "milepael" | "bilde"
+       tittel  : overskrift
+       bil     : valgfritt, f.eks. "Freelander 2 · TD4" (utelat med "")
+       tekst   : beskrivelse
+       bilde   : valgfri filsti, f.eks. "images/logg/tur-01.jpg" (utelat med "")
+       lenke   : valgfri { tekst, url } for f.eks. en PDF-rapport (utelat med null)
      ─────────────────────────────────────────────────────────── */
   const LOGG = [
     {
       dato:"September 2026",
       type:"milepael",
-      tittel:"The on-board AI chip has started learning",
+      tittel:"Ready for more devices",
+      bil:"",
+      tekst:"A new Munin can now be set up from a USB stick with a single command, and updated over the network from the device's own page. Data is organised per car, so a car's history always stays with the right car. The next device will be set up exactly as a new user would do it.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"September 2026",
+      type:"rapport",
+      tittel:"Tested against known faults",
       bil:"Freelander 2 · TD4",
-      tekst:"After months of data collection, the car has enough driving data for every signal group to be trained. Each group gets its own model on the on-board AI chip, trained solely on this car's healthy state. The first ones are done, and the rest will follow. From there, Munin can see when a pattern starts to drift, before it becomes a fault.",
+      tekst:"To test Munin against faults with a known answer, the mass air flow sensor was disconnected for one drive. The report found it: the signal was stuck, the car had set a pending fault code, and the EGR valve was held closed as a result. On another drive the air filter was partly blocked. The report did not find that, because the change only showed at part load. Both results matter equally for the work ahead.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"September 2026",
+      type:"milepael",
+      tittel:"The reference is set",
+      bil:"Freelander 2 · TD4",
+      tekst:"All five system groups (cooling, slow cooling, air, pressure and mechanics) now have their own model, trained in the car on the car's own drives with no human involved. The first reference was frozen on 23 to 25 September. Through the first year the reference follows the car, so it sees every season. On the anniversary it locks.",
       bilde:"",
       lenke:null
     },
@@ -259,34 +276,61 @@
       type:"rapport",
       tittel:"First monthly report, no human involved",
       bil:"Freelander 2 · TD4",
-      tekst:"All three report types are now working, and the first monthly report was written and sent entirely on its own. From the moment the schedule triggered until the PDF landed in the inbox, nobody touched it. The report arrived a few drives after the thermostat was replaced, and closes the loop from June: Munin found the leaking thermostat, the replacement was logged in the service record, and Munin now confirms that the new one holds the temperature steady where it should. Finding, repair and confirmation in one system.",
+      tekst:"The first automatic monthly report was made and sent on its due date, from the moment the schedule triggered until the PDF landed in the inbox, with nobody touching it. At the same time, Munin closed the loop from June: it found the thermostat fault, the replacement was logged in the service record, the reports after the replacement noticed the difference, and Munin now confirms that the new thermostat holds the temperature where it should. Finding, repair and confirmation in one system.",
       bilde:"",
       lenke:{ tekst:"Read the report (PDF)", url:"../images/report_2026-09-27_15-54-19_standard.pdf" }
+    },
+    {
+      dato:"September 2026",
+      type:"milepael",
+      tittel:"One car, one identity",
+      bil:"",
+      tekst:"Each car gets one locked identity (VIN) on all data, checked against the Norwegian Public Roads Administration using the owner's registration number. One car's history cannot be moved to another car.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"August 2026",
+      type:"milepael",
+      tittel:"The whole chain with no human involved",
+      bil:"Freelander 2 · TD4",
+      tekst:"Switching off the ignition ends the drive. After the drive, the device learns from what it has seen and shuts down cleanly. Proven in the car, several times in a row.",
+      bilde:"",
+      lenke:null
+    },
+    {
+      dato:"July 2026",
+      type:"milepael",
+      tittel:"Munin runs on Jetson",
+      bil:"",
+      tekst:"Munin now runs in the car on a Jetson Orin Nano Super, with processor and GPU on the same device.",
+      bilde:"",
+      lenke:null
     },
     {
       dato:"June 2026",
       type:"bilde",
       tittel:"The journey to the next generation has begun",
       bil:"",
-      tekst:"Munin couldn't keep up with its tasks on a Raspberry Pi 5. So we're biting the bullet and migrating to new hardware: a platform with a CPU and a GPU built for AI on the same device.",
+      tekst:"The Raspberry Pi 5 could no longer handle the tasks Munin needs. Work to move Munin to a Jetson Orin Nano Super, with processor and AI GPU on the same device, has begun.",
       bilde:"../images/PXL_20260630_083604202.jpg",
       lenke:null
     },
     {
       dato:"June 2026",
-      type:"milepael",
-      tittel:"Munin learns its own healthy state",
+      type:"rapport",
+      tittel:"An important gap in the system discovered",
       bil:"",
-      tekst:"The system got a fixed reference point for how the car looks when it is healthy, so a gradual change can be measured against something stable instead of slipping by unnoticed. Munin freezes this point on its own once the car has shown what it needs to, and can reset it when a part is actually replaced.",
+      tekst:"A review showed that a reference which moves with the car only sees fast changes. Wear spread over several years would slip into the reference and disappear. That started the work on a fixed reference, which follows the car through the first year and then locks.",
       bilde:"",
       lenke:null
     },
     {
       dato:"June 2026",
       type:"milepael",
-      tittel:"Service reminders tied to what the car actually needs",
+      tittel:"Service intervals and service log",
       bil:"",
-      tekst:"A dedicated maintenance track with intervals per car and a service log the system itself helps keep in order. When something is replaced, this tells Munin to learn the car's new healthy state from scratch.",
+      tekst:"The owner sets the car's service intervals and sees them on the service page, and logs completed service in plain text. A local language model suggests a category, and the owner confirms. The log goes into every report as facts about the car, so the analysis layer can look for change before and after a repair.",
       bilde:"",
       lenke:null
     },
@@ -295,34 +339,16 @@
       type:"rapport",
       tittel:"Thermostat fault found before it set a fault code",
       bil:"Freelander 2 · TD4",
-      tekst:"From three months of driving data, several independent signs pointed to the same failure: the engine did not reach the correct temperature under load, and dropped unusually fast when the foot came off the throttle. A leaking thermostat, caught long before it would have triggered a warning light. Munin's first real field diagnosis.",
-      bilde:"",
-      lenke:null
-    },
-    {
-      dato:"June 2026",
-      type:"rapport",
-      tittel:"An important gap in the system found and closed",
-      bil:"",
-      tekst:"A review revealed that the anomaly detection compared the car against itself in the moment, not against a healthy past. A car with a fault from day one would then learn the fault as normal. The finding triggered the entire work on the fixed reference point.",
+      tekst:"Over three months, several independent signs in the data pointed to the thermostat: the engine stayed cooler than the thermostat is meant to regulate to, and the temperature dropped quickly when the foot came off the throttle. The car had not set any fault code. Munin's first finding in the field.",
       bilde:"",
       lenke:null
     },
     {
       dato:"June 2026",
       type:"milepael",
-      tittel:"Assessing a used car before you buy it",
+      tittel:"One-drive assessment (STassessment)",
       bil:"Freelander 2 · TD4",
-      tekst:"Added a third report type, used-car assessment: Munin combines the car's own measurements with known weaknesses for that exact model and year, gathered from outside sources. Instead of just reading the car in front of you, it knows what to look for on that particular type of car.",
-      bilde:"",
-      lenke:{ tekst:"See example report (PDF, Norwegian)", url:"../images/report_2026-06-28_11-02-04_STassessment.pdf" }
-    },
-    {
-      dato:"June 2026",
-      type:"rapport",
-      tittel:"Reports got smarter and far cheaper to produce",
-      bil:"",
-      tekst:"More report types for different needs, a regular health check and a thorough workshop assessment, powered by stronger reasoning where it is needed. At the same time, the cost of producing them was cut by around 80 percent through tighter control of how much data each report needs.",
+      tekst:"For a car Munin has not seen before: one drive, and the analysis layer uses everything it has, including web search, to assess the car's own data. Knowledge about the model is used to know what to look for, never as a finding in itself. Useful before buying a used car.",
       bilde:"",
       lenke:null
     },
@@ -331,16 +357,16 @@
       type:"rapport",
       tittel:"Large parts of the system cleaned up and secured",
       bil:"",
-      tekst:"Heavy modules were split up and simplified, and fixed checkpoints were built to catch any unintended change in the core. A foundation for building further without backing into old mistakes.",
+      tekst:"Large modules were split up, and tests were built that catch unintended changes in the core. The foundation for building further without repeating old mistakes.",
       bilde:"",
       lenke:null
     },
     {
       dato:"April 2026",
       type:"rapport",
-      tittel:"Temperature monitoring that understands the seasons",
+      tittel:"The first thermostat rule",
       bil:"",
-      tekst:"The thermal monitoring was split up and made smarter, with a threshold that adjusts to the season instead of a fixed number. It tells a cold winter day apart from an actual fault.",
+      tekst:"The first version of the rule that watches the thermostat. It has since been rebuilt several times based on measurements from real drives.",
       bilde:"",
       lenke:null
     },
@@ -349,7 +375,7 @@
       type:"milepael",
       tittel:"A neural network that learns the car's own patterns",
       bil:"",
-      tekst:"A model trained solely on the car's own history, running on the dedicated AI chip on board. It learns how the car's signals relate to each other when everything is healthy, and flags when the pattern breaks from what it has seen before.",
+      tekst:"The first neural network, trained on the car's own history and run on an AI chip on the Raspberry Pi. The models from that time have since been retired, because most of the training data was idling. The lesson shaped how Munin chooses training data today.",
       bilde:"",
       lenke:null
     },
@@ -358,16 +384,16 @@
       type:"milepael",
       tittel:"Munin writes its first full diagnosis",
       bil:"",
-      tekst:"Findings from an entire drive are condensed to the essentials and sent to a powerful reasoning layer that puts together a complete report. Triggered automatically by new faults, monthly, and after service.",
+      tekst:"Findings from a whole drive are gathered and sent to a powerful analysis layer, which writes a complete report. Today, reports are made monthly, on a new stored fault code, and when the owner asks for one.",
       bilde:"",
       lenke:null
     },
     {
       dato:"March 2026",
       type:"milepael",
-      tittel:"The rule engine that never sleeps",
+      tittel:"The rule engine",
       bil:"",
-      tekst:"A deterministic layer that evaluates the car's signals at every single measurement (pressure, air, combustion, temperature and mechanics) and keeps track of fault codes. The solid foundation beneath the learning part.",
+      tekst:"A fixed set of rules assesses the car's signals continuously while driving, and reads fault codes. It sees sudden changes. Slow wear is the job of the learning layers.",
       bilde:"",
       lenke:null
     },
@@ -376,7 +402,7 @@
       type:"milepael",
       tittel:"Works on a new car without manual setup",
       bil:"",
-      tekst:"The system reads the car's identity and builds a signal profile tailored to it automatically. The foundation for Munin to be connected to a car it has never seen, and get going on its own.",
+      tekst:"Munin reads the car's identity and builds its own profile for it automatically. The owner only enters the registration number, which is used to confirm the car with the Norwegian Public Roads Administration.",
       bilde:"",
       lenke:null
     },
@@ -385,7 +411,7 @@
       type:"milepael",
       tittel:"The physical foundation in place",
       bil:"",
-      tekst:"Munin's hardware foundation: power button, status lights, safe shutdown, and a stable connection to the car's OBD port. Everything else was built from here.",
+      tekst:"The first hardware, on a Raspberry Pi 5: power button, status lights, safe shutdown and a stable connection to the car's OBD port. Button and lights were removed when Munin moved to the Jetson; today the device is controlled by the car's ignition.",
       bilde:"",
       lenke:null
     }
