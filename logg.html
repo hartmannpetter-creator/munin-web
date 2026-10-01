@@ -108,8 +108,12 @@
   .entry-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:23px;line-height:1.2;margin-bottom:10px}
   .entry-card p{color:var(--ice-dim);font-size:15.5px}
   .entry-img{
-    width:100%;border-radius:10px;margin-top:18px;display:block;
-    border:1px solid var(--line);background:var(--night);
+    width:100%;margin-top:18px;display:block;
+    aspect-ratio:16/9;object-fit:cover;background:var(--night);
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 4%,#000 9%,#000 91%,rgba(0,0,0,.6) 96%,transparent 100%),linear-gradient(180deg,transparent 0,#000 7%,#000 58%,rgba(0,0,0,.65) 76%,rgba(0,0,0,.22) 90%,transparent 100%);
+    -webkit-mask-composite:source-in;
+            mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 4%,#000 9%,#000 91%,rgba(0,0,0,.6) 96%,transparent 100%),linear-gradient(180deg,transparent 0,#000 7%,#000 58%,rgba(0,0,0,.65) 76%,rgba(0,0,0,.22) 90%,transparent 100%);
+            mask-composite:intersect;
   }
   .entry-link{
     display:inline-block;margin-top:16px;
@@ -261,7 +265,7 @@
       tittel:"Klar for flere enheter",
       bil:"",
       tekst:"En ny Munin kan nå settes opp fra en USB-pinne med én kommando, og oppdateres over nett fra enhetens egen side. Dataene er ordnet per bil, så en bils historikk alltid følger riktig bil. Neste enhet settes opp nøyaktig slik en ny bruker ville gjort det.",
-      bilde:"",
+      bilde:"images/munin-arbeidsbord.webp",
       lenke:null
     },
     {
@@ -315,7 +319,7 @@
       tittel:"Munin kjører på Jetson",
       bil:"",
       tekst:"Munin kjører nå i bilen på Jetson Orin Nano Super, med prosessor og GPU på samme enhet.",
-      bilde:"",
+      bilde:"images/munin-jetson-naerbilde.webp",
       lenke:null
     },
     {
@@ -324,7 +328,7 @@
       tittel:"Reisen mot neste generasjon har begynt",
       bil:"",
       tekst:"Raspberry Pi 5 klarte ikke lenger oppgavene Munin trenger. Arbeidet med å flytte Munin til Jetson Orin Nano Super, med prosessor og GPU for AI på samme enhet, er i gang.",
-      bilde:"images/PXL_20260630_083604202.jpg",
+      bilde:"images/munin-jetson-pakket-ut.webp",
       lenke:null
     },
     {
