@@ -108,8 +108,12 @@
   .entry-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:23px;line-height:1.2;margin-bottom:10px}
   .entry-card p{color:var(--ice-dim);font-size:15.5px}
   .entry-img{
-    width:100%;border-radius:10px;margin-top:18px;display:block;
-    border:1px solid var(--line);background:var(--night);
+    width:100%;margin-top:18px;display:block;
+    aspect-ratio:16/9;object-fit:cover;background:var(--night);
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 4%,#000 9%,#000 91%,rgba(0,0,0,.6) 96%,transparent 100%),linear-gradient(180deg,transparent 0,#000 7%,#000 58%,rgba(0,0,0,.65) 76%,rgba(0,0,0,.22) 90%,transparent 100%);
+    -webkit-mask-composite:source-in;
+            mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 4%,#000 9%,#000 91%,rgba(0,0,0,.6) 96%,transparent 100%),linear-gradient(180deg,transparent 0,#000 7%,#000 58%,rgba(0,0,0,.65) 76%,rgba(0,0,0,.22) 90%,transparent 100%);
+            mask-composite:intersect;
   }
   .entry-link{
     display:inline-block;margin-top:16px;
@@ -261,7 +265,7 @@
       tittel:"Ready for more devices",
       bil:"",
       tekst:"A new Munin can now be set up from a USB stick with a single command, and updated over the network from the device's own page. Data is organised per car, so a car's history always stays with the right car. The next device will be set up exactly as a new user would do it.",
-      bilde:"",
+      bilde:"../images/munin-arbeidsbord.webp",
       lenke:null
     },
     {
@@ -315,7 +319,7 @@
       tittel:"Munin runs on Jetson",
       bil:"",
       tekst:"Munin now runs in the car on a Jetson Orin Nano Super, with processor and GPU on the same device.",
-      bilde:"",
+      bilde:"../images/munin-jetson-naerbilde.webp",
       lenke:null
     },
     {
@@ -324,7 +328,7 @@
       tittel:"The journey to the next generation has begun",
       bil:"",
       tekst:"The Raspberry Pi 5 could no longer handle the tasks Munin needs. Work to move Munin to a Jetson Orin Nano Super, with processor and AI GPU on the same device, has begun.",
-      bilde:"../images/PXL_20260630_083604202.jpg",
+      bilde:"../images/munin-jetson-pakket-ut.webp",
       lenke:null
     },
     {
